@@ -22,13 +22,13 @@ public class MovingCircle
     
     public void render()
     {
-        ui.stroke(255);
+        ui.stroke(255, 0, 255);
         ui.noFill();
         ui.ellipse(x, y, diameter, diameter);
         ui.fill(255);
         // Static field
         ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-        ui.text("I am a moving circle", x, y);
+        ui.text("Loading", x, y);
 
     }
 

@@ -15,5 +15,9 @@ public abstract class UIElement
         this.ui = ui;
     }
 
-    public abstract void render();
-}
+    public void render()
+    {
+        
+          
+    }
+}    
