@@ -9,6 +9,7 @@ public class UI extends PApplet
     SpaceShip ship;
     Radar radar;
     Background bg;
+    Circle cir;
 
     boolean[] keys = new boolean[1024];
 
@@ -38,24 +39,29 @@ public class UI extends PApplet
     public void setup()
     {
         b = new Button(this, width/2, height/2, 500, 500, "I am a button");//UI ui, float x, float y, float width, float height, String text
-       // b = new Button(this, width/2, height/2, 300, 300, "");
         //mc = new MovingCircle(this, width / 2, height / 2, 50);
         //ship = new SpaceShip(30, 100, 600, this);
-        //radar = new Radar(100, 100, 200, this);
-        //bg = new Background(height, width , 30,this);
+        radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
+        bg = new Background(100, 100 , 30,this);
+        // cir = new Circle(this, width/3, height/3, 75, 75, 0, PI); //
+        //cir = new Circle(this, width/3, height/3, 200, 200);
     }
 
     public void draw()
     {
+        
         background(0);
         b.render();
-        b.update();
-
+        b.mousePressed();
        // mc.update();
        // mc.render();
        // ship.render();
-        //radar.render();
-        //bg.render();
+        bg.map();
+        bg.render();
+        radar.render();
+        radar.update();
+        
+        //cir.render();
         
 
         if (checkKey(LEFT))

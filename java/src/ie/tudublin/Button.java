@@ -37,19 +37,17 @@ public class Button
         ui.text(text, x + width * 0.5f, y + height * 0.5f);
     }
         
-    public void update()
+    public void mousePressed()
     {
-        if (mouseX > width/4)
-        { //the curser goes to x bigger than the number the background turns orange
-            // background(255, 100, 0);
-            ui.fill(255, 0, 0);
-            ui.ellipse(x, y, width/4, height/4);
-        }else if (mouseY < width/2)
-        { //the curser goes to x bigger than the number the background turns blue
-            //background(0, 0, 255);
-            ui.fill(0, 0, 255); // blue
-           // ui.ellipse(x , y, width/2, height/2);// after the orange bg the blue circle appears
-         }
+            //background(204);
+            if (ui.mousePressed == true) {
+              ui.fill(255); // White
+            } else {
+              ui.fill(0); // Black
+            }
+            // ui.ellipse(x, y, width/4, height/4);
+            // ui.ellipse(x, y, width/5, height/5);
+
     }
      
 }
