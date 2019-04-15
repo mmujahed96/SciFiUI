@@ -10,6 +10,7 @@ public class UI extends PApplet
     Radar radar;
     Background bg;
     Circle cir;
+    int start = 0;
 
     boolean[] keys = new boolean[1024];
 
@@ -46,20 +47,32 @@ public class UI extends PApplet
         // cir = new Circle(this, width/3, height/3, 75, 75, 0, PI); //
         //cir = new Circle(this, width/3, height/3, 200, 200);
     }
+    // public void mousePressed()
+    // {
+        // if((mouseX > 632 && mouseX < 730) && (mouseY > 332 && mouseY < 432))
+        // {
+
+        // }
+    // }
 
     public void draw()
     {
         
         background(0);
-        b.render();
-        b.mousePressed();
+        
+        line(20,20, mouseX, mouseY);
+        println(mouseX, mouseY); // find out xy co-ordinate line of infinate length from one point to x and y of my mouse
+       // bg.map();
+         bg.render();
+          b.render();
+          b.mousePressed();
+        
        // mc.update();
-       // mc.render();
+        //mc.render();
        // ship.render();
-        bg.map();
-        bg.render();
-        radar.render();
-        radar.update();
+         
+        //  radar.render();
+        //  radar.update();
         
         //cir.render();
         

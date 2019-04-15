@@ -33,7 +33,7 @@ public class Circle extends UIElement
         ui.stroke(255, 255, 0);
         ui.ellipse(x, y, width/2, height/2);
         //ui.arc(x,y,ui.width, ui.height, start, stop);//a, b, c, d, start, stop
-        
+        ui.noStroke();
         
     }
 }

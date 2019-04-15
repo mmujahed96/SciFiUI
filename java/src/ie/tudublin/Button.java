@@ -26,6 +26,7 @@ public class Button
 
     public void render()//this is the image of the the circle
     {
+        ui.strokeWeight(3);
         ui.noFill();
         ui.stroke(0, 0, 255);
         
@@ -35,6 +36,8 @@ public class Button
         ui.ellipse(x, y, width/5, height/5);
         ui.textAlign(PApplet.CENTER, PApplet.CENTER);
         ui.text(text, x + width * 0.5f, y + height * 0.5f);
+        ui.noStroke();
+        ui.strokeWeight(1); //cancels out the first one
     }
         
     public void mousePressed()

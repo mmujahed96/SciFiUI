@@ -21,20 +21,24 @@ public class Background extends UIElement
 
     public void render()
     {
+        ui.strokeWeight(0.1f);
         ui.stroke(77, 242, 217);
         //ui.line(height/2, , size , size);
         ui.noFill();
        // ui.ellipseMode(CENTER);
+       for(float x = 0; x < ui.width; x = x + 35){
+        for(float y = 0; y < ui.height; y = y + 35){
+        ui.rect(x , y, size, size);
+        }
+         }
+       ui.noStroke();
+       ui.strokeWeight(1);
 
     }
-    public void map()
-    {
-        for(float x = 0; x < ui.width; x = x + 35){
-            for(float y = 0; y < ui.height; y = y + 35){
-         ui.rect(x , y, size, size);
-            }
-        }
-    }
+    // public void map()
+    // {
+        
+    // }
     // public void mousePressed()
     // {
     //     keys[keyCode] = true;
