@@ -1,10 +1,13 @@
 package ie.tudublin;
 
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 
 public class UI extends PApplet
 {
-    //Button b;
+    ArrayList <Button> button = new ArrayList<Button>();
+    //Button button;
     MovingCircle mc;
     SpaceShip ship;
     Radar radar;
@@ -14,7 +17,6 @@ public class UI extends PApplet
 
     boolean[] keys = new boolean[1024];
 
-    ArrayList <Button> b = new ArrayList<Button>();
     public void keyPressed()
     {
         keys[keyCode] = true;
@@ -40,7 +42,11 @@ public class UI extends PApplet
 
     public void setup()
     {
-        b.add (new Button(this, width/2, height/2, 500, 500, "I am a button"));//UI ui, float x, float y, float width, float height, String text
+        button.add(new Button(this, width/2, height/2, 500, 500));//UI ui, float x, float y, float width, float height, String text
+        button.add(new Button(this,width/2, height/2, 120, 120));
+        button.add(new Button(this,width/2, height/2, 400, 400));
+        // ui.ellipse(x, y, width/4, height/4);
+        // ui.ellipse(x, y, width/5, height/5);
         //mc = new MovingCircle(this, width / 2, height / 2, 50);
         //ship = new SpaceShip(30, 100, 600, this);
         radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
@@ -64,9 +70,13 @@ public class UI extends PApplet
         line(20,20, mouseX, mouseY);
         println(mouseX, mouseY); // find out xy co-ordinate line of infinate length from one point to x and y of my mouse
        // bg.map();
-         bg.render();
-          b.render();
-          b.mousePressed();
+        bg.render();
+        for(int b = 0; b < button.size(); b++)
+            {
+                button.get(b).render();
+            }
+       // button.render();
+        //button.mousePressed();
         
        // mc.update();
         //mc.render();

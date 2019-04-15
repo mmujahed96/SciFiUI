@@ -14,14 +14,14 @@ public class Button
     private int mouseX;
     
 
-    public Button(UI ui, float x, float y, float width, float height, String text)
+    public Button(UI ui, float x, float y, float width, float height)
     {
         this.ui = ui;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.text = text;
+        
     }
 
     public void render()//this is the image of the the circle
@@ -31,11 +31,9 @@ public class Button
         ui.stroke(0, 0, 255);
         
        // ui.ellipse(x , y, width/2, height/2);
-        ui.ellipse(x , y, width/2, height/2);
-        ui.ellipse(x, y, width/4, height/4);
-        ui.ellipse(x, y, width/5, height/5);
-        ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-        ui.text(text, x + width * 0.5f, y + height * 0.5f);
+        // ui.textAlign(PApplet.CENTER, PApplet.CENTER);
+        // ui.text(text, x + width * 0.5f, y + height * 0.5f);
+        ui.ellipse(x, y, width, height);//kel
         ui.noStroke();
         ui.strokeWeight(1); //cancels out the first one
     }
@@ -54,4 +52,3 @@ public class Button
     }
      
 }
-    
