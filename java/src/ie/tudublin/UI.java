@@ -4,7 +4,7 @@ import processing.core.PApplet;
 
 public class UI extends PApplet
 {
-    Button b;
+    //Button b;
     MovingCircle mc;
     SpaceShip ship;
     Radar radar;
@@ -14,6 +14,7 @@ public class UI extends PApplet
 
     boolean[] keys = new boolean[1024];
 
+    ArrayList <Button> b = new ArrayList<Button>();
     public void keyPressed()
     {
         keys[keyCode] = true;
@@ -39,7 +40,7 @@ public class UI extends PApplet
 
     public void setup()
     {
-        b = new Button(this, width/2, height/2, 500, 500, "I am a button");//UI ui, float x, float y, float width, float height, String text
+        b.add (new Button(this, width/2, height/2, 500, 500, "I am a button"));//UI ui, float x, float y, float width, float height, String text
         //mc = new MovingCircle(this, width / 2, height / 2, 50);
         //ship = new SpaceShip(30, 100, 600, this);
         radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
@@ -71,8 +72,8 @@ public class UI extends PApplet
         //mc.render();
        // ship.render();
          
-        //  radar.render();
-        //  radar.update();
+          radar.render();
+          radar.update();
         
         //cir.render();
         
