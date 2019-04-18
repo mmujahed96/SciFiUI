@@ -7,12 +7,15 @@ import processing.core.PApplet;
 public class UI extends PApplet
 {
     ArrayList <Button> button = new ArrayList<Button>();
+    ArrayList <Planets> planets = new ArrayList<Planets>();
+
     //Button button;
     MovingCircle mc;
     SpaceShip ship;
     Radar radar;
     Background bg;
     Circle cir;
+    //Planets plan;
     int start = 0;
 
     boolean[] keys = new boolean[1024];
@@ -42,11 +45,24 @@ public class UI extends PApplet
 
     public void setup()
     {
+        //loading 
         button.add(new Button(this, width/2, height/2, 500, 500));//UI ui, float x, float y, float width, float height, String text
         button.add(new Button(this,width/2, height/2, 120, 120));
         button.add(new Button(this,width/2, height/2, 400, 400));
-        // ui.ellipse(x, y, width/4, height/4);
-        // ui.ellipse(x, y, width/5, height/5);
+        button.add(new Button(this,width/2, height/2, 330, 330));
+
+        
+        planets.add(new Planets(30, 100, 500, 75, this));
+        planets.add(new Planets(30, 190, 500, 75, this));
+        planets.add(new Planets(30, 280, 500, 75, this));
+        planets.add(new Planets(30, 370, 500, 75, this));
+        planets.add(new Planets(30, 460, 500, 75, this));
+        //box inside
+        planets.add(new Planets(384, 105, 142, 66, this));
+        planets.add(new Planets(384, 195, 142, 66, this));
+        planets.add(new Planets(384, 285, 142, 66, this));
+        planets.add(new Planets(384, 375, 142, 66, this));
+        planets.add(new Planets(384, 465, 142, 66, this));
         //mc = new MovingCircle(this, width / 2, height / 2, 50);
         //ship = new SpaceShip(30, 100, 600, this);
         radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
@@ -71,11 +87,21 @@ public class UI extends PApplet
         println(mouseX, mouseY); // find out xy co-ordinate line of infinate length from one point to x and y of my mouse
        // bg.map();
         bg.render();
-        for(int b = 0; b < button.size(); b++)
-            {
-                button.get(b).render();
-            }
-       // button.render();
+        if (start == 0){
+            for(int b = 0; b < button.size(); b++)
+                {
+                    button.get(b).render();
+                    //button.mousePressed();
+                    for(int p = 0; p < planets.size(); p++){
+                    planets.get(p).render();
+                    }
+                }    
+        }
+        // }else if(start == 0){
+        //     for(int p = 0; p < planets.size(); p++)
+        //     planets.get(p).render();
+        // }
+       
         //button.mousePressed();
         
        // mc.update();
