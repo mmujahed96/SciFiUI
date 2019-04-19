@@ -3,37 +3,76 @@ package ie.tudublin;
 import processing.core.PApplet;
 
 public class Circle extends UIElement
-{
-    private int size; // fields 
-    private float width;
-    private float height;
-    private float diameter;
-    private float radius;
-    private float start;
-    private float stop;
-    protected PApplet ui;
 
-    //public Circle(UI ui, float x, float y, float width, float height, float start, float stop)
-    public Circle(PApplet ui, float x, float y, float width, float height)
-    {
-        super(x, y, ui);
-        this.size = size;
-        this.diameter = diameter;
-        radius = diameter / 2;
-        this.width = width;
-        this.height = height;
-        // this.start = start;
-        // this.stop = stop;
-    }
+{
+
+    private float diameter;
+
+ 
+
+public Circle (float x, float y ,float radius, float diameter, PApplet ui)
+
+   {
+
+    super(x, y, ui);
+
+   this.diameter = diameter;
+
+   radius = diameter/2;
+
+   }
+
+ 
+
+    float spin = 0;
+
+    float spin1 = 0;
 
     public void render()
+
     {
-        //ui.smooth();
-        ui.noFill();
-        ui.stroke(255, 255, 0);
-        ui.ellipse(x, y, width/2, height/2);
-        //ui.arc(x,y,ui.width, ui.height, start, stop);//a, b, c, d, start, stop
-        ui.noStroke();
-        
+
+        for(int i = 0; i < 2; i++) // circles
+
+        {
+
+            ui.noFill();
+
+            ui.stroke(0,200,200);
+
+            ui.ellipse(x,y, i*(50),i*(50)); // makes static circles small / big
+            //ui.noStroke();
+        }
+
+        ui.pushMatrix();
+
+        ui.translate(x,y);
+
+        ui.rotate(spin);
+
+        int outline = 75;   //  semi arc 's position
+
+        for(int i =0; i< 2; i++) //  thickness of arc
+
+        {
+            ui.strokeWeight(2);
+            ui.stroke(0 + (i*30),0 + (i*10),0 + (i*25));
+
+            ui.arc(0,0,outline,outline,0,ui.PI); // size of semi arc | starting point 
+
+            outline += 10 ; // size
+            //ui.noStroke();
+        }
+
+       ui.popMatrix();
+
+        spin -= 0.5f; // rotation speed
+
+     
+
     }
+
+ 
+
 }
+

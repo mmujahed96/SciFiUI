@@ -8,13 +8,14 @@ public class UI extends PApplet
 {
     ArrayList <Button> button = new ArrayList<Button>();
     ArrayList <Planets> planets = new ArrayList<Planets>();
+    ArrayList <Circle> cir = new ArrayList<>();
 
     //Button button;
     MovingCircle mc;
     SpaceShip ship;
     Radar radar;
     Background bg;
-    Circle cir;
+    //Circle cir;
     //Planets plan;
     int start = 0;
 
@@ -67,7 +68,7 @@ public class UI extends PApplet
         //ship = new SpaceShip(30, 100, 600, this);
         radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
         bg = new Background(100, 100 , 30,this);
-        // cir = new Circle(this, width/3, height/3, 75, 75, 0, PI); //
+        cir = new Circle(width/3, height/3, 75, 75, this); //
         //cir = new Circle(this, width/3, height/3, 200, 200);
     }
     // public void mousePressed()
@@ -96,11 +97,13 @@ public class UI extends PApplet
                     planets.get(p).render();
                     }
                 }    
+        }else if (start == 1){
+            for(int p = 0; p < planets.size(); p++)
+            {
+            planets.get(p).render();
+            }
+            cir.render();
         }
-        // }else if(start == 0){
-        //     for(int p = 0; p < planets.size(); p++)
-        //     planets.get(p).render();
-        // }
        
         //button.mousePressed();
         
@@ -111,7 +114,7 @@ public class UI extends PApplet
           radar.render();
           radar.update();
         
-        //cir.render();
+        
         
 
         if (checkKey(LEFT))
