@@ -32,6 +32,7 @@ public class Planets extends UIElement
        ui.strokeWeight(1);
 
     }
+   
     // public void map()
     // {
         

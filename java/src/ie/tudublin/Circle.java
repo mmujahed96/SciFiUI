@@ -10,7 +10,7 @@ public class Circle extends UIElement
     private float random;
  
 
-public Circle (float x, float y ,float radius, float diameter, PApplet ui)
+public Circle (float x, float y ,float radius, float diameter, String text, UI ui)
 
    {
 
@@ -22,8 +22,6 @@ public Circle (float x, float y ,float radius, float diameter, PApplet ui)
    radius = diameter/2;
 
    }
-
- 
 
     float spin = 0;
 
@@ -44,13 +42,20 @@ public Circle (float x, float y ,float radius, float diameter, PApplet ui)
             ui.ellipse(x,y, i*(70),i*(70)); // makes static circles small / big
             
             float r = random(50);   
-            for(int j = 0; j < 2; j++){ 
+            for(int j = 0; j < 3; j++){ 
              
-            ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-            ui.text( 50+r, x, y);
-            }
+                ui.textAlign(PApplet.CENTER, PApplet.CENTER);
+                ui.text( random(50), x, y);
+                }
             ui.noStroke();
         }
+        // for(int j = 0; j < 3; j++){ 
+             
+        //     ui.textAlign(PApplet.CENTER, PApplet.CENTER);
+        //     }
+            // ui.text( "59%", x, y);
+            // ui.text("69%", x+100, y);
+            // ui.text("92%", x+200, y);
 
         ui.pushMatrix();
 

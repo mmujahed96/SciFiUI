@@ -53,33 +53,33 @@ public class UI extends PApplet
         button.add(new Button(this,width/2, height/2, 330, 330));
 
         
-        planets.add(new Planets(30, 100, 500, 75, this));
-        planets.add(new Planets(30, 190, 500, 75, this));
+        planets.add(new Planets(30, 124, 500, 75, this));
+        planets.add(new Planets(30, 202, 500, 75, this));
         planets.add(new Planets(30, 280, 500, 75, this));
-        planets.add(new Planets(30, 370, 500, 75, this));
-        planets.add(new Planets(30, 460, 500, 75, this));
+        planets.add(new Planets(30, 358, 500, 75, this));
+        planets.add(new Planets(30, 436, 500, 75, this));
         //box inside
-        planets.add(new Planets(384, 105, 142, 66, this));
-        planets.add(new Planets(384, 195, 142, 66, this));
-        planets.add(new Planets(384, 285, 142, 66, this));
-        planets.add(new Planets(384, 375, 142, 66, this));
-        planets.add(new Planets(384, 465, 142, 66, this));
+        planets.add(new Planets(384, 129, 142, 66, this));
+        planets.add(new Planets(384, 206, 142, 66, this));
+        planets.add(new Planets(384, 284, 142, 66, this));
+        planets.add(new Planets(384, 362, 142, 66, this));
+        planets.add(new Planets(384, 440, 142, 66, this));
         //mc = new MovingCircle(this, width / 2, height / 2, 50);
         //ship = new SpaceShip(30, 100, 600, this);
         radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
         bg = new Background(100, 100 , 30,this);
-        cir.add(new Circle(100, 46, 100, 75, this)); //
-        cir.add(new Circle(200, 46, 75, 75, this));
-        cir.add(new Circle(300, 46, 75, 75, this));
+        cir.add(new Circle(100, 46, 75, 75, "59%", this)); //
+        cir.add(new Circle(200, 46, 75, 75, "79%", this));
+        cir.add(new Circle(300, 46, 75, 75, "92%", this));
         
     }
-    // public void mousePressed()
-    // {
-        // if((mouseX > 632 && mouseX < 730) && (mouseY > 332 && mouseY < 432))
-        // {
-
-        // }
-    // }
+     public void mousePressed()
+     {
+         if((mouseX > 632 && mouseX < 730) && (mouseY > 332 && mouseY < 432))//load screen
+         {
+            start = 1;
+         }
+     }
 
     public void draw()
     {
@@ -97,6 +97,9 @@ public class UI extends PApplet
                     //button.mousePressed();
                     
             }
+            
+                   
+        }else if (start == 1){
             for(int p = 0; p < planets.size(); p++){
                 planets.get(p).render();
                 
@@ -104,15 +107,7 @@ public class UI extends PApplet
                 for(int c = 0; c < cir.size(); c++){
                     cir.get(c).render();
                 }
-                   
-        }
-          
-        // }else if (start == 1){
-        //     // for(int p = 0; p < planets.size(); p++)
-        //     // {
-        //     // planets.get(p).render();
-        //     // cir.get(p).render();
-        //     // }
+             }
             
          
        
