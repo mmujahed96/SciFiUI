@@ -68,9 +68,9 @@ public class UI extends PApplet
         //ship = new SpaceShip(30, 100, 600, this);
         radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
         bg = new Background(100, 100 , 30,this);
-        cir.add(new Circle(101, 46, 100, 75, this)); //
-        cir.add(new Circle(190, 46, 75, 75, this));
-        cir.add(new Circle(270, 46, 75, 75, this));
+        cir.add(new Circle(100, 46, 100, 75, this)); //
+        cir.add(new Circle(200, 46, 75, 75, this));
+        cir.add(new Circle(300, 46, 75, 75, this));
         
     }
     // public void mousePressed()
