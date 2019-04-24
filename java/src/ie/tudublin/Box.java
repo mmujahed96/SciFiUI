@@ -7,8 +7,7 @@ public class Box extends UIElement
     private int size; // fields 
     private float width;
     private float height;
-    //private int CENTER;
-    //private int wd;
+
 
     public Box(float x, float y, float width, float height , PApplet ui)
 
@@ -25,10 +24,10 @@ public class Box extends UIElement
     {
        // ui.strokeWeight(0.1f);
         ui.stroke(77, 242, 217);
-        //ui.line(height/2, , size , size);
         ui.noFill();
         ui.rect(x, y, width, height);
-       ui.noStroke();
-       ui.strokeWeight(1);
+        ui.noStroke();
+        //ui.strokeWeight(1);
 
     }
+}

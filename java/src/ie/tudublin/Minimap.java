@@ -19,16 +19,12 @@ public class Minimap extends UIElement
         this.height = height;
 
     }
-    public void box()
-    {
-        ui.rect(1212, 0, 160, 200);
-    }
+   
     public void render()
     {
         ui.noFill();
         ui.strokeWeight(1);
         ui.stroke(0,200,200);
-        //ui.rect(x, y, width, height);
         ui.ellipse(x, y, width, height);
         ui.noStroke();  
         

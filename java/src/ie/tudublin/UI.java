@@ -9,9 +9,9 @@ public class UI extends PApplet
 {
     ArrayList <Button> button = new ArrayList<Button>();
     ArrayList <Planets> planets = new ArrayList<Planets>();
-    ArrayList <Circle> cir = new ArrayList<>();
-    ArrayList <Minimap> mini = new ArrayList<>();
-    ArrayList <Box> box = new ArrayList<>();
+    ArrayList <Circle> cir = new ArrayList<Circle>();
+    ArrayList <Minimap> mini = new ArrayList<Minimap>();
+    ArrayList <Box> box = new ArrayList<Box>();
 
     //Button button;
     MovingCircle mc;
@@ -77,8 +77,10 @@ public class UI extends PApplet
         cir.add(new Circle(100, 46, 75, 75, "59%", this)); //
         cir.add(new Circle(200, 46, 75, 75, "79%", this));
         cir.add(new Circle(300, 46, 75, 75, "92%", this));
-        mini.add(new Minimap(1212, 0, 160, 209,this));
-        box = new Minimap(1212, 0, 160, 200,this);
+        mini.add(new Minimap(1280, 94, 100, 100,this));
+        mini.add(new Minimap(1280, 94, 30, 30,this));
+        mini.add(new Minimap(1280, 94, 140, 140,this));
+        box.add (new Box(1200, 0, 160, 180,this));
     }
      public void mousePressed()
      {
@@ -127,6 +129,9 @@ public class UI extends PApplet
                 for(int m = 0; m < mini.size(); m++){
                     mini.get(m).render();
                 }
+                    for(int x = 0; x < box.size(); x++){
+                        box.get(x).render();
+                    }
              }
             
          
@@ -136,12 +141,6 @@ public class UI extends PApplet
        // mc.update();
         //mc.render();
        // ship.render();
-         
-        //   radar.render();
-        //   radar.update();
-        
-        
-        
 
         if (checkKey(LEFT))
         {
