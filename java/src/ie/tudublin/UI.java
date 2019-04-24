@@ -3,12 +3,15 @@ package ie.tudublin;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class UI extends PApplet
 {
     ArrayList <Button> button = new ArrayList<Button>();
     ArrayList <Planets> planets = new ArrayList<Planets>();
     ArrayList <Circle> cir = new ArrayList<>();
+    ArrayList <Minimap> mini = new ArrayList<>();
+    ArrayList <Box> box = new ArrayList<>();
 
     //Button button;
     MovingCircle mc;
@@ -18,8 +21,10 @@ public class UI extends PApplet
     //Circle cir;
     //Planets plan;
     int start = 0;
-
     boolean[] keys = new boolean[1024];
+    PImage stary;
+    
+
 
     public void keyPressed()
     {
@@ -46,6 +51,7 @@ public class UI extends PApplet
 
     public void setup()
     {
+        stary = loadImage("bg.jpg");
         //loading 
         button.add(new Button(this, width/2, height/2, 500, 500));//UI ui, float x, float y, float width, float height, String text
         button.add(new Button(this,width/2, height/2, 120, 120));
@@ -71,7 +77,8 @@ public class UI extends PApplet
         cir.add(new Circle(100, 46, 75, 75, "59%", this)); //
         cir.add(new Circle(200, 46, 75, 75, "79%", this));
         cir.add(new Circle(300, 46, 75, 75, "92%", this));
-        
+        mini.add(new Minimap(1212, 0, 160, 209,this));
+        box = new Minimap(1212, 0, 160, 200,this);
     }
      public void mousePressed()
      {
@@ -90,9 +97,16 @@ public class UI extends PApplet
         println(mouseX, mouseY); // find out xy co-ordinate line of infinate length from one point to x and y of my mouse
        // bg.map();
         bg.render();
-        if (start == 0){
+        
+        // if(load == false){
+        //     background(stary);
+        // }
+        // else
+         if (start == 0){
+           
             for(int b = 0; b < button.size(); b++)
                 {
+                    
                     button.get(b).render();
                     //button.mousePressed();
                     
@@ -100,12 +114,18 @@ public class UI extends PApplet
             
                    
         }else if (start == 1){
+            radar.render();
+            radar.update();
             for(int p = 0; p < planets.size(); p++){
                 planets.get(p).render();
                 
             }
                 for(int c = 0; c < cir.size(); c++){
                     cir.get(c).render();
+                }
+                 
+                for(int m = 0; m < mini.size(); m++){
+                    mini.get(m).render();
                 }
              }
             
@@ -117,8 +137,8 @@ public class UI extends PApplet
         //mc.render();
        // ship.render();
          
-          radar.render();
-          radar.update();
+        //   radar.render();
+        //   radar.update();
         
         
         

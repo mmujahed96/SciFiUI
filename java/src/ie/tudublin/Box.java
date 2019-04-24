@@ -2,7 +2,7 @@ package ie.tudublin;
 
 import processing.core.PApplet;
 
-public class Minimap extends UIElement
+public class Box extends UIElement
 {
     private int size; // fields 
     private float width;
@@ -10,7 +10,8 @@ public class Minimap extends UIElement
     //private int CENTER;
     //private int wd;
 
-    public Minimap (float x, float y, float width, float height , PApplet ui)
+    public Box(float x, float y, float width, float height , PApplet ui)
+
     {
         super(x, y, ui);
         this.size = size;
@@ -19,18 +20,15 @@ public class Minimap extends UIElement
         this.height = height;
 
     }
-    public void box()
-    {
-        ui.rect(1212, 0, 160, 200);
-    }
+
     public void render()
     {
+       // ui.strokeWeight(0.1f);
+        ui.stroke(77, 242, 217);
+        //ui.line(height/2, , size , size);
         ui.noFill();
-        ui.strokeWeight(1);
-        ui.stroke(0,200,200);
-        //ui.rect(x, y, width, height);
-        ui.ellipse(x, y, width, height);
-        ui.noStroke();  
-        
+        ui.rect(x, y, width, height);
+       ui.noStroke();
+       ui.strokeWeight(1);
+
     }
-}    
