@@ -1,4 +1,4 @@
-//small circles with percentages
+//small circles with percentage
 package ie.tudublin;
 
 import processing.core.PApplet;
