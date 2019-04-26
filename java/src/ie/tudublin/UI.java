@@ -14,7 +14,7 @@ public class UI extends PApplet
     //ArrayList <Minimap> mini = new ArrayList<Minimap>();
     //ArrayList <Box> box = new ArrayList<Box>();
 
-    //Button button;
+    
     MovingCircle mc;
     SpaceShip ship;
     Radar radar;
@@ -92,22 +92,42 @@ public class UI extends PApplet
      }
     
     float spiral = 0; 
+    int i = 0;
+    boolean begin = false;
     public void loading()
     {
+        float outline = 75;
         float cx = width/2;
         float cy = height/2;
-        fill(0, 0, 255);
-        stroke(0);
+        strokeCap(SQUARE);
+        fill(0, 0, 255);//blue
+        spiral = (float) ((spiral + abs(sin((float) (spiral * .1)) * 1) * 1 + .1) % 200);
         ellipse(cx , cy , 400, 400);
-        fill(434);
-        ellipse(cx, cy, spiral, 400);
+        //noFill();
+        fill(0, 255, 0);//green
+        ellipse(cx, cy, spiral + 450, spiral + 450);
+        noFill();
+        
+        fill(255);
+        ellipse(cx, cy, spiral -330 , spiral - 330);
         noFill();
         fill(0);
-        ellipse(cx, cy, 330, 330);
-        // if(spiral == 450)
-        // {
-
-        // }
+        ellipse(cx, cy, spiral -250 , spiral - 250);
+        arc(0,0,outline,outline,0,PI);
+        noFill();
+        
+        //display loading and press here
+        if((spiral > 190 && mouseX < 200) && (spiral > 190 && spiral < 200))
+        {
+            textAlign(CENTER); 
+            System.out.println("Loading");
+            spiral = 450;
+            fill(51, 0, 26);
+            rect(cx - 220, height - 2000, spiral, 50);
+        } else if((spiral > 490 && mouseX < 500) && (spiral > 490 && spiral < 500)) {
+            System.out.println("Press here");
+        }
+         noStroke();
 
 
     }
@@ -116,26 +136,34 @@ public class UI extends PApplet
     {
         
         background(0);
-        loading();
+        
         line(20,20, mouseX, mouseY);
         println(mouseX, mouseY); // find out xy co-ordinate line of infinate length from one point to x and y of my mouse
        // bg.map();
         bg.render();
         
-        // if(load == false){
-        //     background(stary);
+        // if(begin == false){
+        //     //background(stary);
+        //     noStroke();
+        //     pushMatrix();
+        //     translate(width/2, height/2, -250);
+        //     pushMatrix();
+        //     rotateY(PI * frameCount / 500);
+        //     popMatrix();
+        //     loading();
         // }
-        // else
+        // else 
          if (start == 0){
-           
+            loading();
             for(int b = 0; b < button.size(); b++)
                 {
                     
                     button.get(b).render();
                     //button.mousePressed();
                     
+                    
             }
-            
+             
                    
         }else if (start == 1){
             radar.render();
