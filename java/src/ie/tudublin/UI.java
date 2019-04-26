@@ -81,7 +81,8 @@ public class UI extends PApplet
         elements.add(new Minimap(1280, 94, 100, 100,this));
         elements.add(new Minimap(1280, 94, 30, 30, this));
         elements.add(new Minimap(1280, 94, 140, 140, this));
-        elements.add (new Box(1200, 0, 160, 180,this));
+        elements.add(new Box(1200, 0, 160, 180,this));
+        elements.add(new Box(562, 30, 50, 480,this));
     }
      public void mousePressed()
      {
@@ -105,7 +106,7 @@ public class UI extends PApplet
         ellipse(cx , cy , 400, 400);
         //noFill();
         fill(0, 255, 0);//green
-        ellipse(cx, cy, spiral + 450, spiral + 450);
+        ellipse(cx, cy, spiral + 141, spiral + 141);
         noFill();
         
         fill(255);
@@ -123,11 +124,12 @@ public class UI extends PApplet
             System.out.println("Loading");
             spiral = 450;
             fill(51, 0, 26);
-            rect(cx - 220, height - 2000, spiral, 50);
+            noFill();
         } else if((spiral > 490 && mouseX < 500) && (spiral > 490 && spiral < 500)) {
             System.out.println("Press here");
         }
          noStroke();
+         
 
 
     }
