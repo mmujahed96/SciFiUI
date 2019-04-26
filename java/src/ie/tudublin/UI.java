@@ -106,13 +106,17 @@ public class UI extends PApplet
         ellipse(cx , cy , 400, 400);
         //noFill();
         fill(0, 255, 0);//green
-        ellipse(cx, cy, spiral + 141, spiral + 141);
+        ellipse(cx, cy, spiral + 140, spiral + 140);
         noFill();
         
-        fill(255);
+        fill(255, 100);
         ellipse(cx, cy, spiral -330 , spiral - 330);
+        fill(0, 0, 255);
+        textSize(15);
+        textAlign(CENTER);
+        text("Press Here", cx, cy);
         noFill();
-        fill(0);
+        fill(0, 100);
         ellipse(cx, cy, spiral -250 , spiral - 250);
         arc(0,0,outline,outline,0,PI);
         noFill();
@@ -126,7 +130,7 @@ public class UI extends PApplet
             fill(51, 0, 26);
             noFill();
         } else if((spiral > 490 && mouseX < 500) && (spiral > 490 && spiral < 500)) {
-            System.out.println("Press here");
+           // ("Press here");
         }
          noStroke();
          
