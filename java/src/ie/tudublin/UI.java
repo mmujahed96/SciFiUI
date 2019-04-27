@@ -10,7 +10,7 @@ public class UI extends PApplet
     ArrayList <UIElement> elements = new ArrayList<UIElement>();
     ArrayList <Button> button = new ArrayList<Button>();
     ArrayList <Planets> planets = new ArrayList<Planets>();
-    ArrayList <Circle> cir = new ArrayList<Circle>();
+    ArrayList <Circle> circle = new ArrayList<Circle>();
     //ArrayList <Minimap> mini = new ArrayList<Minimap>();
     //ArrayList <Box> box = new ArrayList<Box>();
 
@@ -25,6 +25,7 @@ public class UI extends PApplet
     boolean[] keys = new boolean[1024];
     PImage stary;
     Button but;
+    PImage s1,s2,s3,s4,s5;
     
    
 
@@ -76,17 +77,24 @@ public class UI extends PApplet
         // ship = new SpaceShip(30, 100, 600, this);
         radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
         bg = new Background(100, 100 , 30,this);
-        cir.add(new Circle(100, 46, 75, 75, "59%", this)); //
-        cir.add(new Circle(200, 46, 75, 75, "79%", this));
-        cir.add(new Circle(300, 46, 75, 75, "92%", this));
         elements.add(new Minimap(1280, 94, 100, 100,this));
         elements.add(new Minimap(1280, 94, 30, 30, this));
         elements.add(new Minimap(1280, 94, 140, 140, this));
         elements.add(new Box(1200, 0, 160, 180,this));
         elements.add(new Box(562, 30, 50, 480,this));
         but = new Button(this, 30, 30, 100,50 );
+
+        for(int i = 0; i < 3; i++)
+        {
+            int text = (int)random(50,100);
+            Circle cir = new Circle(100 +(i*100), 46, 75, 75, text, this);
+            circle.add(cir);
+            
+        }
+
+        s1 = loadImage("exo.jpg");
     }
-    
+     PImage image;
     
      public void mousePressed()
      {
@@ -111,7 +119,7 @@ public class UI extends PApplet
          }else if ((mouseX > 332 && mouseX < 475) && (mouseY > 393 && mouseY < 441))//planet 5
          {
              start = 2;
-         }else if((mouseX > 30 && mouseX < 130) && (mouseY > 30 && mouseY < 79))
+         }else if((mouseX > 30 && mouseX < 130) && (mouseY > 30 && mouseY < 79))//back button
          {
              start = back;
          }
@@ -204,25 +212,49 @@ public class UI extends PApplet
              
                    
         }else if (start == 1){
+            //background(stary);
             // radar.render();
             // radar.update();
             for(int p = 0; p < planets.size(); p++){
                 planets.get(p).render();
                 
             }
-                for(int c = 0; c < cir.size(); c++){
-                    cir.get(c).render();
+                // for(int c = 0; c < cir.size(); c++){
+                //     cir.get(c).render();
+                // }
+                for(Circle cr: circle)
+                {
+                    noFill();
+                    textSize(15);
+                    cr.render();
+                    text("Oxygen",100, 100);
+                    text("Feul",200,100);
+                    text("Water Supply", 300, 100);
                 }
-                 
                 for(int m = 0; m < elements.size(); m++){
                     elements.get(m).render();
                 }
                     for(int x = 0; x < elements.size(); x++){
                         elements.get(x).render();
                     }
-             }else if (start == 2){
+             }else if (start == 2){ //planet 1
+                but.backButton();
+                fill(0, 0, 255);
+                textSize(20);
+                textAlign(CENTER);
+                text("Back", 132, 50);
+                noFill();
+                image(s1,width/5,height/2, 500,500);
+                
                 radar.render();
                 radar.update();
+             }else if (start == 3){
+                but.backButton();
+             }else if (start == 4){
+                but.backButton();
+             }else if (start == 5){
+                but.backButton();
+             }else if (start == 6){
                 but.backButton();
              }
             
