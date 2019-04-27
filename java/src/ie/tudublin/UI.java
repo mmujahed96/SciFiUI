@@ -84,25 +84,49 @@ public class UI extends PApplet
         elements.add(new Box(1200, 0, 160, 180,this));
         elements.add(new Box(562, 30, 50, 480,this));
     }
+
      public void mousePressed()
      {
          if((mouseX > 632 && mouseX < 730) && (mouseY > 332 && mouseY < 432))//load screen
          {
             start = 1;
          }
+         else if((mouseX > 384 && mouseX < 526) && (mouseY > 130 && mouseY < 193))//planet 1
+         {
+             start = 2;
+         }else if((mouseX > 384 && mouseX < 526) && (mouseY > 207 && mouseY < 271)) //planet 2
+         {
+             start = 2;
+         }else if((mouseX > 384 && mouseX < 526) && (mouseY > 286 && mouseY < 349))//planet 3
+         {
+             start = 2;
+         }else if((mouseX > 384 && mouseX < 526) && (mouseY > 363 && mouseY < 427))//planet 4
+         {
+             start = 2;
+         }else if ((mouseX > 384 && mouseX < 526) && (mouseY > 441 && mouseY < 506))//planet 5
+         {
+             start = 2;
+         }
      }
     
     float spiral = 0; 
     int i = 0;
     boolean begin = false;
+
     public void loading()
     {
+
         float outline = 75;
         float cx = width/2;
         float cy = height/2;
+        fill(0, 0, 255);
+        textSize(60);
+        textAlign(CENTER);
+        text("Eligius III", 672, 75);
+        noFill();
         strokeCap(SQUARE);
         fill(0, 0, 255);//blue
-        spiral = (float) ((spiral + abs(sin((float) (spiral * .1)) * 1) * 1 + .1) % 200);
+        spiral = (float) ((spiral + abs(sin((float) (spiral * .1)) * 1) * 1 + .1) % 200); //speed of circles increaseing and decreasing with how much percent the increase and decrease
         ellipse(cx , cy , 400, 400);
         //noFill();
         fill(0, 255, 0);//green
@@ -122,16 +146,16 @@ public class UI extends PApplet
         noFill();
         
         //display loading and press here
-        if((spiral > 190 && mouseX < 200) && (spiral > 190 && spiral < 200))
-        {
-            textAlign(CENTER); 
-            System.out.println("Loading");
-            spiral = 450;
-            fill(51, 0, 26);
-            noFill();
-        } else if((spiral > 490 && mouseX < 500) && (spiral > 490 && spiral < 500)) {
-           // ("Press here");
-        }
+        // if((spiral > 190 && mouseX < 200) && (spiral > 190 && spiral < 200))
+        // {
+        //     textAlign(CENTER); 
+        //     System.out.println("Loading");
+        //     spiral = 450;
+        //     fill(51, 0, 26);
+        //     noFill();
+        // } else if((spiral > 490 && mouseX < 500) && (spiral > 490 && spiral < 500)) {
+        //    // ("Press here");
+        // }
          noStroke();
          
 
@@ -172,8 +196,8 @@ public class UI extends PApplet
              
                    
         }else if (start == 1){
-            radar.render();
-            radar.update();
+            // radar.render();
+            // radar.update();
             for(int p = 0; p < planets.size(); p++){
                 planets.get(p).render();
                 
@@ -188,6 +212,9 @@ public class UI extends PApplet
                     for(int x = 0; x < elements.size(); x++){
                         elements.get(x).render();
                     }
+             }else if (start == 2){
+                radar.render();
+                radar.update();
              }
             
          

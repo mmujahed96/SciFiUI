@@ -23,7 +23,7 @@ public class Planets extends UIElement
 
     public void render()
     {
-       // ui.strokeWeight(0.1f);
+        ui.strokeWeight(1);
         ui.stroke(77, 242, 217);
         //ui.line(height/2, , size , size);
         ui.noFill();
@@ -33,12 +33,5 @@ public class Planets extends UIElement
 
     }
    
-    // public void map()
-    // {
-        
-    // }
-    // public void mousePressed()
-    // {
-    //     keys[keyCode] = true;
-    // }
+    
 }
