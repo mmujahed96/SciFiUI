@@ -46,9 +46,12 @@ public class Button
             } else {
               ui.fill(0); // Black
             }
-            // ui.ellipse(x, y, width/4, height/4);
-            // ui.ellipse(x, y, width/5, height/5);
 
+    }
+    public void backButton()
+    {
+      ui.fill(255, 0, 255);
+      ui.rect(x,y,width, height);
     }
      
 }

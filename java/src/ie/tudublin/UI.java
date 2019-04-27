@@ -24,6 +24,7 @@ public class UI extends PApplet
     int start = 0;
     boolean[] keys = new boolean[1024];
     PImage stary;
+    Button but;
     
    
 
@@ -83,11 +84,13 @@ public class UI extends PApplet
         elements.add(new Minimap(1280, 94, 140, 140, this));
         elements.add(new Box(1200, 0, 160, 180,this));
         elements.add(new Box(562, 30, 50, 480,this));
+        but = new Button(this, 30, 30, 100,50 );
     }
     
-    int back = start -1;
+    
      public void mousePressed()
      {
+        int back = start -1;
          if((mouseX > 632 && mouseX < 730) && (mouseY > 332 && mouseY < 432))//load screen
          {
             start = 1;
@@ -108,6 +111,9 @@ public class UI extends PApplet
          }else if ((mouseX > 332 && mouseX < 475) && (mouseY > 393 && mouseY < 441))//planet 5
          {
              start = 2;
+         }else if((mouseX > 30 && mouseX < 130) && (mouseY > 30 && mouseY < 79))
+         {
+             start = back;
          }
      }
     
@@ -217,6 +223,7 @@ public class UI extends PApplet
              }else if (start == 2){
                 radar.render();
                 radar.update();
+                but.backButton();
              }
             
          
