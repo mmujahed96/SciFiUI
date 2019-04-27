@@ -9,8 +9,9 @@ public class Planets extends UIElement
     private float height;
     //private int CENTER;
     //private int wd;
+    private String text;
 
-    public Planets(float x, float y, float width, float height , PApplet ui)
+    public Planets(float x, float y, float width, float height ,String text, PApplet ui)
 
     {
         super(x, y, ui);
@@ -18,6 +19,7 @@ public class Planets extends UIElement
         //this.wd = (int) (width / 2);
         this.width = width;
         this.height = height;
+        this.text = text;
 
     }
 

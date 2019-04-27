@@ -54,7 +54,6 @@ public class UI extends PApplet
 
     public void setup()
     {
-        stary = loadImage("bg.jpg");
         //loading 
         button.add(new Button(this, width/2, height/2, 500, 500));//UI ui, float x, float y, float width, float height, String text
         button.add(new Button(this,width/2, height/2, 120, 120));
@@ -62,17 +61,17 @@ public class UI extends PApplet
         button.add(new Button(this,width/2, height/2, 330, 330));
 
         //rectangle
-        planets.add(new Planets(30, 139, 450, 60, this));
-        planets.add(new Planets(30, 201, 450, 60, this));
-        planets.add(new Planets(30, 263, 450, 60, this));
-        planets.add(new Planets(30, 325, 450, 60, this));
-        planets.add(new Planets(30, 387, 450, 60, this));
-        //box inside
-        planets.add(new Planets(332, 144, 144, 50, this));
-        planets.add(new Planets(332, 206, 144, 50, this));
-        planets.add(new Planets(332, 268, 144, 50, this));
-        planets.add(new Planets(332, 330, 144, 50, this));
-        planets.add(new Planets(332, 392, 144, 50, this));
+        // planets.add(new Planets(30, 139, 450, 60, this));
+        // planets.add(new Planets(30, 201, 450, 60, this));
+        // planets.add(new Planets(30, 263, 450, 60, this));
+        // planets.add(new Planets(30, 325, 450, 60, this));
+        // planets.add(new Planets(30, 387, 450, 60, this));
+        // //box inside
+        // planets.add(new Planets(332, 144, 144, 50, this));
+        // planets.add(new Planets(332, 206, 144, 50, this));
+        // planets.add(new Planets(332, 268, 144, 50, this));
+        // planets.add(new Planets(332, 330, 144, 50, this));
+        // planets.add(new Planets(332, 392, 144, 50, this));
         // mc = new MovingCircle(this, width / 2, height / 2, 50);
         // ship = new SpaceShip(30, 100, 600, this);
         radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
@@ -84,6 +83,21 @@ public class UI extends PApplet
         elements.add(new Box(562, 30, 50, 480,this));
         but = new Button(this, 30, 30, 100,50 );
 
+        for(int i = 0; i < 5; i++)
+        {
+            Planets p = new Planets(30 ,139 +(i*62) , 450, 60, "ded", this);
+            Planets pb = new Planets(332 ,144 +(i*62) , 144, 50, "fdrf", this);
+            planets.add(p);
+            planets.add(pb);
+            
+        }
+        // for(int i = 0; i < 5; i++)
+        // {
+        //     Planets pb = new Planets(332 ,144 +(i*62) , 144, 50, "fdrf", this);
+        //     planets.add(pb);
+            
+        // }
+
         for(int i = 0; i < 3; i++)
         {
             int text = (int)random(50,100);
@@ -93,12 +107,17 @@ public class UI extends PApplet
         }
 
         s1 = loadImage("exo.jpg");
+        s2 = loadImage("earth.jpg");
+        s3 = loadImage("gliese667c.jpg");
+        s4 = loadImage("Kepler62f.jpg");
+        s5 = loadImage("HWVir.jpg");
+        stary = loadImage("bg.jpg");
     }
-     PImage image;
+     
     
      public void mousePressed()
      {
-        int back = start -1;
+       // int back = start -1;
          if((mouseX > 632 && mouseX < 730) && (mouseY > 332 && mouseY < 432))//load screen
          {
             start = 1;
@@ -109,19 +128,16 @@ public class UI extends PApplet
              start = 2;
          }else if((mouseX > 332 && mouseX < 475) && (mouseY > 206 && mouseY < 255)) //planet 2
          {
-             start = 2;
+             start = 3;
          }else if((mouseX > 332 && mouseX < 475) && (mouseY > 268 && mouseY < 317))//planet 3
          {
-             start = 2;
+             start = 4;
          }else if((mouseX > 332 && mouseX < 475) && (mouseY > 330 && mouseY < 379))//planet 4
          {
-             start = 2;
+             start = 5;
          }else if ((mouseX > 332 && mouseX < 475) && (mouseY > 393 && mouseY < 441))//planet 5
          {
-             start = 2;
-         }else if((mouseX > 30 && mouseX < 130) && (mouseY > 30 && mouseY < 79))//back button
-         {
-             start = back;
+             start = 6;
          }
      }
     
@@ -206,22 +222,20 @@ public class UI extends PApplet
                     
                     button.get(b).render();
                     //button.mousePressed();
-                    
-                    
-            }
-             
-                   
+            }      
         }else if (start == 1){
             //background(stary);
-            // radar.render();
-            // radar.update();
-            for(int p = 0; p < planets.size(); p++){
-                planets.get(p).render();
+            radar.render();
+            radar.update();
+            for(Planets p: planets){
+                p.render();
                 
             }
-                // for(int c = 0; c < cir.size(); c++){
-                //     cir.get(c).render();
-                // }
+            for(Planets pb: planets){
+                pb.render();
+                
+            }
+            
                 for(Circle cr: circle)
                 {
                     noFill();
@@ -238,6 +252,7 @@ public class UI extends PApplet
                         elements.get(x).render();
                     }
              }else if (start == 2){ //planet 1
+                background(0);
                 but.backButton();
                 fill(0, 0, 255);
                 textSize(20);
@@ -245,17 +260,19 @@ public class UI extends PApplet
                 text("Back", 132, 50);
                 noFill();
                 image(s1,width/5,height/2, 500,500);
-                
-                radar.render();
-                radar.update();
              }else if (start == 3){
                 but.backButton();
+                image(s2,width/5,height/2, 500,500);
+                
              }else if (start == 4){
                 but.backButton();
+                image(s3,width/5,height/2, 500,500);
              }else if (start == 5){
                 but.backButton();
+                image(s4,width/5,height/2, 500,500);
              }else if (start == 6){
                 but.backButton();
+                image(s5,width/5,height/2, 500,500);
              }
             
          
