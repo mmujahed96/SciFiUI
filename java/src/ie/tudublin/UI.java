@@ -30,11 +30,11 @@ public class UI extends PApplet
     PImage s1,s2,s3,s4,s5;
     float radius = 0;
     //Minimap mini;
-    float k = 20.0f;
+    float k = 10.0f;
     float k1 = 0.5f;
-    float k2 = 6.0f;
-    float k3 = 7.0f;
-    float l = 1.0f;
+    float k2 = 0.5f;
+    float k3 = 10.0f;
+    float l = 15.0f;
     float step = 1;
 
     public void keyPressed()
@@ -78,6 +78,7 @@ public class UI extends PApplet
         // elements.add(new Minimap(1280, 94, 140, 140, this));
         elements.add(new Box(1200, 0, 160, 180,this));
         elements.add(new Box(492, 139, 110, 480,this));
+        elements.add(new Box(2,518,278,247,this));
         but = new Button(this, 30, 30, 100,50 );
 
         //rectangles and button rectangle inside
@@ -194,11 +195,11 @@ public class UI extends PApplet
     {
       float kx = 0.0f;
       float ky = width/2;
-      for (float x=6; x<width/5; x+=step)
+      for (float x=2;  x<width/5; x+=step)
       {
-        float sx = map(x, 0, 100, -6, 2);    //sinex
-        float sy = sine(sx);//siney
-        float y = map(sy, -3, 0, height/2, 60);
+        float sx = map(x, 5, 300, -4, 8);    //sine x //processing.core.PApplet.map(float value, float start1, float stop1, float start2, float stop2)
+        float sy = sine(sx);//sine y
+        float y = map(sy, -4, 0, height/0.5f, 650);//moves down page 
         fill(255);
         stroke(255);
         line(kx, ky, x, y);
@@ -207,7 +208,7 @@ public class UI extends PApplet
         ky = y;
       }
       l += 0.3;  
-      k3 += (k-k3)/200;
+      k3  += (k-k3)/200;
     
     }
 
@@ -245,7 +246,9 @@ public class UI extends PApplet
             //background(stary);
             radar.render();
             radar.update();
+            k=random(10, 15);
             sinew();
+
             for(Planets p: planets){
                 p.render();
                 fill(255);
