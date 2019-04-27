@@ -59,18 +59,18 @@ public class UI extends PApplet
         button.add(new Button(this,width/2, height/2, 400, 400));
         button.add(new Button(this,width/2, height/2, 330, 330));
 
-        
-        planets.add(new Planets(30, 124, 500, 75, this));
-        planets.add(new Planets(30, 202, 500, 75, this));
-        planets.add(new Planets(30, 280, 500, 75, this));
-        planets.add(new Planets(30, 358, 500, 75, this));
-        planets.add(new Planets(30, 436, 500, 75, this));
+        //rectangle
+        planets.add(new Planets(30, 139, 450, 60, this));
+        planets.add(new Planets(30, 201, 450, 60, this));
+        planets.add(new Planets(30, 263, 450, 60, this));
+        planets.add(new Planets(30, 325, 450, 60, this));
+        planets.add(new Planets(30, 387, 450, 60, this));
         //box inside
-        planets.add(new Planets(384, 129, 142, 66, this));
-        planets.add(new Planets(384, 206, 142, 66, this));
-        planets.add(new Planets(384, 284, 142, 66, this));
-        planets.add(new Planets(384, 362, 142, 66, this));
-        planets.add(new Planets(384, 440, 142, 66, this));
+        planets.add(new Planets(332, 144, 144, 50, this));
+        planets.add(new Planets(332, 206, 144, 50, this));
+        planets.add(new Planets(332, 268, 144, 50, this));
+        planets.add(new Planets(332, 330, 144, 50, this));
+        planets.add(new Planets(332, 392, 144, 50, this));
         // mc = new MovingCircle(this, width / 2, height / 2, 50);
         // ship = new SpaceShip(30, 100, 600, this);
         radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
@@ -84,26 +84,28 @@ public class UI extends PApplet
         elements.add(new Box(1200, 0, 160, 180,this));
         elements.add(new Box(562, 30, 50, 480,this));
     }
-
+    
+    int back = start -1;
      public void mousePressed()
      {
          if((mouseX > 632 && mouseX < 730) && (mouseY > 332 && mouseY < 432))//load screen
          {
             start = 1;
+            
          }
-         else if((mouseX > 384 && mouseX < 526) && (mouseY > 130 && mouseY < 193))//planet 1
+         else if((mouseX > 332 && mouseX < 475) && (mouseY > 144 && mouseY < 192))//planet 1
          {
              start = 2;
-         }else if((mouseX > 384 && mouseX < 526) && (mouseY > 207 && mouseY < 271)) //planet 2
+         }else if((mouseX > 332 && mouseX < 475) && (mouseY > 206 && mouseY < 255)) //planet 2
          {
              start = 2;
-         }else if((mouseX > 384 && mouseX < 526) && (mouseY > 286 && mouseY < 349))//planet 3
+         }else if((mouseX > 332 && mouseX < 475) && (mouseY > 268 && mouseY < 317))//planet 3
          {
              start = 2;
-         }else if((mouseX > 384 && mouseX < 526) && (mouseY > 363 && mouseY < 427))//planet 4
+         }else if((mouseX > 332 && mouseX < 475) && (mouseY > 330 && mouseY < 379))//planet 4
          {
              start = 2;
-         }else if ((mouseX > 384 && mouseX < 526) && (mouseY > 441 && mouseY < 506))//planet 5
+         }else if ((mouseX > 332 && mouseX < 475) && (mouseY > 393 && mouseY < 441))//planet 5
          {
              start = 2;
          }
