@@ -26,7 +26,7 @@ public class UI extends PApplet
     PImage stary;
     Button but;
     PImage s1,s2,s3,s4,s5;
-    
+    float radius = 0;
    
 
     public void keyPressed()
@@ -59,19 +59,6 @@ public class UI extends PApplet
         button.add(new Button(this,width/2, height/2, 120, 120));
         button.add(new Button(this,width/2, height/2, 400, 400));
         button.add(new Button(this,width/2, height/2, 330, 330));
-
-        //rectangle
-        // planets.add(new Planets(30, 139, 450, 60, this));
-        // planets.add(new Planets(30, 201, 450, 60, this));
-        // planets.add(new Planets(30, 263, 450, 60, this));
-        // planets.add(new Planets(30, 325, 450, 60, this));
-        // planets.add(new Planets(30, 387, 450, 60, this));
-        // //box inside
-        // planets.add(new Planets(332, 144, 144, 50, this));
-        // planets.add(new Planets(332, 206, 144, 50, this));
-        // planets.add(new Planets(332, 268, 144, 50, this));
-        // planets.add(new Planets(332, 330, 144, 50, this));
-        // planets.add(new Planets(332, 392, 144, 50, this));
         // mc = new MovingCircle(this, width / 2, height / 2, 50);
         // ship = new SpaceShip(30, 100, 600, this);
         radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
@@ -80,24 +67,19 @@ public class UI extends PApplet
         elements.add(new Minimap(1280, 94, 30, 30, this));
         elements.add(new Minimap(1280, 94, 140, 140, this));
         elements.add(new Box(1200, 0, 160, 180,this));
-        elements.add(new Box(562, 30, 50, 480,this));
+        elements.add(new Box(492, 139, 110, 480,this));
         but = new Button(this, 30, 30, 100,50 );
 
+        //rectangles and button rectangle inside
         for(int i = 0; i < 5; i++)
         {
-            Planets p = new Planets(30 ,139 +(i*62) , 450, 60, "ded", this);
-            Planets pb = new Planets(332 ,144 +(i*62) , 144, 50, "fdrf", this);
+            Planets p = new Planets(30 ,139 +(i*62) , 450, 60, this);
+            Planets pb = new Planets(332 ,144 +(i*62) , 144, 50, this);
             planets.add(p);
             planets.add(pb);
             
         }
-        // for(int i = 0; i < 5; i++)
-        // {
-        //     Planets pb = new Planets(332 ,144 +(i*62) , 144, 50, "fdrf", this);
-        //     planets.add(pb);
-            
-        // }
-
+        //circles with percentages
         for(int i = 0; i < 3; i++)
         {
             int text = (int)random(50,100);
@@ -107,7 +89,7 @@ public class UI extends PApplet
         }
 
         s1 = loadImage("exo.jpg");
-        s2 = loadImage("earth.jpg");
+        s2 = loadImage("bg.jpg");
         s3 = loadImage("gliese667c.jpg");
         s4 = loadImage("Kepler62f.jpg");
         s5 = loadImage("HWVir.jpg");
@@ -143,7 +125,7 @@ public class UI extends PApplet
     
     float spiral = 0; 
     int i = 0;
-    boolean begin = false;
+   // boolean begin = false;
 
     public void loading()
     {
@@ -227,15 +209,25 @@ public class UI extends PApplet
             //background(stary);
             radar.render();
             radar.update();
+            fill(255);
+            ellipse(width/8, 75, radius*2, radius*2);
             for(Planets p: planets){
                 p.render();
+                fill(255);
+                 ellipse(width, 300, radius*2, radius*2);
                 
             }
             for(Planets pb: planets){
+                fill(58, 59, 171);
+                textSize(20);
                 pb.render();
+                text("ERUPTUS",400 ,164);
+                text("EARTH",400 ,228);
+                text("KEPLER",400 ,292);
+                text("GLIESE",400 ,351);
+                text("CRIM", 400 ,414);
                 
             }
-            
                 for(Circle cr: circle)
                 {
                     noFill();
@@ -245,12 +237,15 @@ public class UI extends PApplet
                     text("Feul",200,100);
                     text("Water Supply", 300, 100);
                 }
-                for(int m = 0; m < elements.size(); m++){
+
+                for(int m = 0; m < elements.size(); m++)
+                {
                     elements.get(m).render();
                 }
                     for(int x = 0; x < elements.size(); x++){
                         elements.get(x).render();
                     }
+
              }else if (start == 2){ //planet 1
                 background(0);
                 but.backButton();
@@ -259,20 +254,27 @@ public class UI extends PApplet
                 textAlign(CENTER);
                 text("Back", 132, 50);
                 noFill();
-                image(s1,width/5,height/2, 500,500);
+                image(s1,width - 550 ,height - 700, 450,450);
+
              }else if (start == 3){
+                background(0);
                 but.backButton();
-                image(s2,width/5,height/2, 500,500);
+                image(s2,width - 550 ,height - 700, 450,450);
                 
              }else if (start == 4){
+                background(0);
                 but.backButton();
-                image(s3,width/5,height/2, 500,500);
+                image(s3,width - 550 ,height - 700, 450,450);
+
              }else if (start == 5){
+                background(0);
                 but.backButton();
-                image(s4,width/5,height/2, 500,500);
+                image(s4,width - 550 ,height - 700, 450,450);
+
              }else if (start == 6){
+                background(0);
                 but.backButton();
-                image(s5,width/5,height/2, 500,500);
+                image(s5,width - 550 ,height - 700, 450,450);
              }
             
          

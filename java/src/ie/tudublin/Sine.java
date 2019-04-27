@@ -2,16 +2,18 @@ package ie.tudublin;
 
 import processing.core.PApplet;
 
-public class Planets extends UIElement
+public class Sine extends UIElement
 {
     private int size; // fields 
     private float width;
     private float height;
-    //private int CENTER;
-    //private int wd;
-    private String text;
+    private float radius;
+    private int xa = 2; // x axis
+    private int ya = 1; //y axis
+    private int c1, c2;
 
-    public Planets(float x, float y, float width, float height, PApplet ui)
+
+    public Sine(float x, float y, float width, float height , PApplet ui)
 
     {
         super(x, y, ui);
@@ -19,21 +21,18 @@ public class Planets extends UIElement
         //this.wd = (int) (width / 2);
         this.width = width;
         this.height = height;
-        this.text = text;
 
     }
 
     public void render()
     {
-        ui.strokeWeight(1);
+       // ui.strokeWeight(0.1f);
         ui.stroke(77, 242, 217);
-        //ui.line(height/2, , size , size);
         ui.noFill();
         ui.rect(x, y, width, height);
-       ui.noStroke();
-       ui.strokeWeight(1);
+        ui.noStroke();
+        //ui.strokeWeight(1);
+        
 
     }
-   
-    
 }

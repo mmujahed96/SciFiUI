@@ -35,27 +35,27 @@ public class Minimap extends UIElement
 
         ui.rotate(spin);
 
-        int outline = 100;   //  semi arc 's position
+        int outline = 60;   //  semi arc 's position
 
-        for(int i =0; i< 1; i++) //  thickness of arc
+        for(int i =0; i< 2; i++) //  thickness of arc
 
         {
             ui.strokeWeight(1);
-            ui.stroke(0 + (i*300),0 + (i*10),0 + (i*25));
-
+            ui.stroke(0 + (i*50),0 + (i*200),0 + (i*25));
             //ui.arc(0,0,outline,outline,0,ui.PI); // size of semi arc | starting point
             ui.circle(0, 0, outline);
+            // ui.stroke(0 + (i*50),0 + (i*150),0 + (i*25));
             // ui.ellipse(0, 0, outline, outline);
             // ui.ellipse(0, 0, outline, ui.PI);
             
-            outline += 2 ; // size
+            outline += 3 ; // size
             ui.noStroke();
             //ui.noEllispseMode();
         }
 
        ui.popMatrix();
 
-        spin -= 0.1f;
+        spin -= 0.5f;
         
     }
 }    
