@@ -5,51 +5,40 @@ import processing.core.PVector;
 
 public class Minimap extends UIElement
 {
-    private int size; // fields 
-    private float radius;
-    private PVector pos;
-    private float frequency;
-    private float spin = 0;
+    int size; // fields 
+   // float radius;
+    PVector pos;
+    float frequency;
+    float spin = 0;
+    float r, g, b;
 
-    public Minimap (float x, float y, float frequency, float radius , PApplet ui)
+    public Minimap (float x, float y, float frequency, int size , float r, float g, float b, PApplet ui)
     {
         super(x, y, ui);
         //this.wd = (int) (width / 2);
+        this.size = size;
         this.frequency = frequency;
         pos = new PVector(x, y);
-        this.radius = radius;
+        //this.radius = radius;
+        this.r = r;
+        this.g = g;
+        this.b = b;
     }
     
    
     public void render()
     {
         ui.pushMatrix();        
-        ui.noFill();
         ui.stroke(0, 200, 0);
         ui.translate(pos.x, pos.y);
         ui.rotate(spin);
-        ui.ellipse(0, 0, radius * 2, radius * 2);
-        for(int i = 0; i < 2 ; i++)
-        {
-            //int  = 0;
-
-        ui.ellipse(0,0,radius*.5f,radius*.5f); //circle for the suns
-        ui.fill(255, 0, 0, 75);
-        ui.ellipse(50 +(i*.5f),0 +(i*.006f) , radius * .4f, radius * 0.4f);// small red planet
+        ui.fill(r, g, b);
+        ui.ellipse(pos.x,pos.y,size, size); //circle for the suns
         ui.noFill();
-        ui.ellipse(20 +(i*.10f),0 +(i*.006f) , radius * .4f, radius * 0.4f);
         
-        }
-        ui.popMatrix();
         
-
-         ui.ellipse(pos.x, pos.y, radius * 2, radius * 2);
-        //  ui.ellipse(pos.x, pos.y, radius * 0.08f, radius * 0.8f);
-        //  ui.ellipse(pos.x, pos.y, radius * .05f, radius * .05f);
-         float x2 = pos.x + (float) Math.sin(spin) * radius;
-         float y2 = pos.y - (float) Math.cos(spin) * radius;
-         //ui.line(pos.x, pos.y, x2, y2);
-         ui.circle(pos.x, pos.y, 50 );
+        
+         ui.popMatrix();
     }
     float timeDelta = 1.0f/ 60.0f;
     public void move()

@@ -11,7 +11,9 @@ public class UI extends PApplet
     ArrayList <Button> button = new ArrayList<Button>();
     ArrayList <Planets> planets = new ArrayList<Planets>();
     ArrayList <Circle> circle = new ArrayList<Circle>();
-    //ArrayList <Minimap> mini = new ArrayList<Minimap>();
+    ArrayList <Minimap> lines = new ArrayList<Minimap>();
+    ArrayList <Minimap> mini = new ArrayList<Minimap>();
+
     //ArrayList <Box> box = new ArrayList<Box>();
 
     
@@ -27,8 +29,13 @@ public class UI extends PApplet
     Button but;
     PImage s1,s2,s3,s4,s5;
     float radius = 0;
-    Minimap mini;
-   
+    //Minimap mini;
+    float k = 20.0f;
+    float k1 = 0.5f;
+    float k2 = 6.0f;
+    float k3 = 7.0f;
+    float l = 1.0f;
+    float step = 1;
 
     public void keyPressed()
     {
@@ -64,7 +71,8 @@ public class UI extends PApplet
         // ship = new SpaceShip(30, 100, 600, this);
         radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
         bg = new Background(100, 100 , 30,this);
-        mini = new Minimap(1280, 94, 0.4f, 50, this);
+       // mini.add(new Minimap(1280, 94, 0.4f, 50, this);//(float x, float y, int size, float frequency, float radius , float r, float g, float b, PApplet ui
+        mini.add(new Minimap(1280, 94, 0.4f, 50, 116, 0, 255, this));
         // elements.add(new Minimap(1280, 94, 100, 100,this));
         // elements.add(new Minimap(1280, 94, 30, 30, this));
         // elements.add(new Minimap(1280, 94, 140, 140, this));
@@ -177,6 +185,32 @@ public class UI extends PApplet
 
 
     }
+    float sine(float x) {
+      return k1*pow(k2/(k2+pow(x, 4)), k2)*cos(k3*x-l);
+     
+     
+    }
+    void sinew()
+    {
+      float kx = 0.0f;
+      float ky = width/2;
+      for (float x=6; x<width/5; x+=step)
+      {
+        float sx = map(x, 0, 100, -6, 2);    //sinex
+        float sy = sine(sx);//siney
+        float y = map(sy, -3, 0, height/2, 60);
+        fill(255);
+        stroke(255);
+        line(kx, ky, x, y);
+    
+        kx = x;
+        ky = y;
+      }
+      l += 0.3;  
+      k3 += (k-k3)/200;
+    
+    }
+
 
     public void draw()
     {
@@ -211,8 +245,7 @@ public class UI extends PApplet
             //background(stary);
             radar.render();
             radar.update();
-            mini.render();
-            mini.move();
+            sinew();
             for(Planets p: planets){
                 p.render();
                 fill(255);
@@ -240,10 +273,11 @@ public class UI extends PApplet
                     text("Water Supply", 300, 100);
                 }
 
-                // for(int m = 0; m < elements.size(); m++)
-                // {
-                //     elements.get(m).render();
-                // }
+                for(int m = 0; m < mini.size(); m++)
+                {
+                    mini.get(m).render();
+                    mini.get(m).move();
+                }
                     for(int x = 0; x < elements.size(); x++){
                         elements.get(x).render();
                     }
