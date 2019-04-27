@@ -27,6 +27,7 @@ public class UI extends PApplet
     Button but;
     PImage s1,s2,s3,s4,s5;
     float radius = 0;
+    Minimap mini;
    
 
     public void keyPressed()
@@ -63,9 +64,10 @@ public class UI extends PApplet
         // ship = new SpaceShip(30, 100, 600, this);
         radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
         bg = new Background(100, 100 , 30,this);
-        elements.add(new Minimap(1280, 94, 100, 100,this));
-        elements.add(new Minimap(1280, 94, 30, 30, this));
-        elements.add(new Minimap(1280, 94, 140, 140, this));
+        mini = new Minimap(1280, 94, 0.4f, 50, this);
+        // elements.add(new Minimap(1280, 94, 100, 100,this));
+        // elements.add(new Minimap(1280, 94, 30, 30, this));
+        // elements.add(new Minimap(1280, 94, 140, 140, this));
         elements.add(new Box(1200, 0, 160, 180,this));
         elements.add(new Box(492, 139, 110, 480,this));
         but = new Button(this, 30, 30, 100,50 );
@@ -209,8 +211,8 @@ public class UI extends PApplet
             //background(stary);
             radar.render();
             radar.update();
-            fill(255);
-            ellipse(width/8, 75, radius*2, radius*2);
+            mini.render();
+            mini.move();
             for(Planets p: planets){
                 p.render();
                 fill(255);
@@ -238,10 +240,10 @@ public class UI extends PApplet
                     text("Water Supply", 300, 100);
                 }
 
-                for(int m = 0; m < elements.size(); m++)
-                {
-                    elements.get(m).render();
-                }
+                // for(int m = 0; m < elements.size(); m++)
+                // {
+                //     elements.get(m).render();
+                // }
                     for(int x = 0; x < elements.size(); x++){
                         elements.get(x).render();
                     }
