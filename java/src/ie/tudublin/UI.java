@@ -20,7 +20,7 @@ public class UI extends PApplet
     private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  
     private ArrayList<Planetdata> DataErup = new ArrayList<Planetdata>();  
     private ArrayList<Planetdata> DataKep = new ArrayList<Planetdata>();  
-    // private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  
+    private ArrayList<Planetdata> DataGli = new ArrayList<Planetdata>();  
     // private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  
     
     MovingCircle mc;
@@ -117,6 +117,7 @@ public class UI extends PApplet
         loadEarthdata(); 
         loadErupdata();
         loadKepdata();
+        loadGlidata(); 
     }
      
     
@@ -376,7 +377,10 @@ public class UI extends PApplet
                 background(0);
                 but.backButton();
                 image(s4,width - 550 ,height - 700, 450,450);
-
+                for(int e = 0; e < DataGli.size(); e++)
+                {
+                drawGlidata();
+                }
              }else if (start == 6){
                 background(0);
                 but.backButton();
@@ -446,7 +450,7 @@ public class UI extends PApplet
             noStroke();
         }
     } 
-
+//kepler
     public void loadKepdata() 
     {
         Table table = loadTable("kepler.csv", "header");
@@ -471,5 +475,30 @@ public class UI extends PApplet
             noStroke();
         }
     } 
+    //gliese
+    public void loadGlidata() 
+    {
+        Table table = loadTable("gliese.csv", "header");
+        for (TableRow row : table.rows()) 
+        {
+            Planetdata gliData = new Planetdata(row);
+            DataGli.add(gliData);
+        }
+    }
+    public void drawGlidata()
+    {
+        for(Planetdata gliData : DataGli)
+        {
+            stroke(255);
+            fill(255);
+            textSize(20);
+            textAlign(LEFT);
+            text(gliData.getName(), 0, 0);
+            text(gliData.getAbout(), 100, 230);
+            text(gliData.getRace(), 100, 260, 500, 450);
+            noFill();
+            noStroke();
+        }
+    }
 }
 
