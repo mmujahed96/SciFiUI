@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 import processing.core.PImage;
+import processing.data.Table;
+import processing.data.TableRow;
 
 public class UI extends PApplet
 {
@@ -15,7 +17,7 @@ public class UI extends PApplet
     ArrayList <Minimap> mini = new ArrayList<Minimap>();
 
     //ArrayList <Box> box = new ArrayList<Box>();
-
+    private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  
     
     MovingCircle mc;
     SpaceShip ship;
@@ -105,6 +107,8 @@ public class UI extends PApplet
         s4 = loadImage("Kepler62f.jpg");
         s5 = loadImage("HWVir.jpg");
         stary = loadImage("bg.jpg");
+
+        loadEarthdata(); 
     }
      
     
@@ -328,7 +332,7 @@ public class UI extends PApplet
                         elements.get(x).render();
                     }
 
-             }else if (start == 2){ //planet 1
+             }else if (start == 2){ //eruptus
                 background(0);
                 but.backButton();
                 fill(0, 0, 255);
@@ -338,10 +342,14 @@ public class UI extends PApplet
                 noFill();
                 image(s1,width - 550 ,height - 700, 450,450);
 
-             }else if (start == 3){
+             }else if (start == 3){ //earth
                 background(0);
                 but.backButton();
                 image(s2,width - 550 ,height - 700, 450,450);
+                for(int e = 0; e < DataE.size(); e++)
+                {
+                drawEarthdata();
+                }
                 
              }else if (start == 4){
                 background(0);
@@ -372,5 +380,29 @@ public class UI extends PApplet
             System.out.println("Left arrow key pressed");
         }
     }
+    public void loadEarthdata() 
+    {
+        Table table = loadTable("earth.csv", "header");
+        for (TableRow row : table.rows()) 
+        {
+            Planetdata eData = new Planetdata(row);
+            DataE.add(eData);
+        }
+    }
+    public void drawEarthdata()
+    {
+        for(Planetdata eData : DataE)
+        {
+            stroke(255);
+            fill(255);
+            textSize(20);
+            textAlign(LEFT);
+            text(eData.getName(), 0, 0);
+            text(eData.getAbout(), 100, 230);
+            text(eData.getRace(), 100, 260, 500, 450);
+            noFill();
+            noStroke();
+        }
+    } 
 }
 
