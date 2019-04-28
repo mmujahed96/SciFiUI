@@ -98,9 +98,9 @@ public class UI extends PApplet
             circle.add(cir);
             
         }
-
+        //img
         s1 = loadImage("exo.jpg");
-        s2 = loadImage("bg.jpg");
+        s2 = loadImage("dearth.jpg");
         s3 = loadImage("gliese667c.jpg");
         s4 = loadImage("Kepler62f.jpg");
         s5 = loadImage("HWVir.jpg");
