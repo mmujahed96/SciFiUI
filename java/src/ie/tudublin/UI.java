@@ -17,11 +17,11 @@ public class UI extends PApplet
     ArrayList <Minimap> mini = new ArrayList<Minimap>();
 
     //ArrayList <Box> box = new ArrayList<Box>();
-    private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  
-    private ArrayList<Planetdata> DataErup = new ArrayList<Planetdata>();  
-    private ArrayList<Planetdata> DataKep = new ArrayList<Planetdata>();  
-    private ArrayList<Planetdata> DataGli = new ArrayList<Planetdata>();  
-    // private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  
+    private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  //earth data
+    private ArrayList<Planetdata> DataErup = new ArrayList<Planetdata>();  //eruptus data
+    private ArrayList<Planetdata> DataKep = new ArrayList<Planetdata>();  //keplet data
+    private ArrayList<Planetdata> DataGli = new ArrayList<Planetdata>();  //gliese data
+    private ArrayList<Planetdata> DataCri = new ArrayList<Planetdata>();  //crim data
     
     MovingCircle mc;
     SpaceShip ship;
@@ -114,10 +114,12 @@ public class UI extends PApplet
         s5 = loadImage("HWVir.jpg");
         stary = loadImage("bg.jpg");
 
+        //planet info
         loadEarthdata(); 
         loadErupdata();
         loadKepdata();
         loadGlidata(); 
+        loadCridata();
     }
      
     
@@ -385,6 +387,10 @@ public class UI extends PApplet
                 background(0);
                 but.backButton();
                 image(s5,width - 550 ,height - 700, 450,450);
+                for(int e = 0; e < DataCri.size(); e++)
+                {
+                drawCridata();
+                }
              }
             
          
@@ -496,6 +502,31 @@ public class UI extends PApplet
             text(gliData.getName(), 0, 0);
             text(gliData.getAbout(), 100, 230);
             text(gliData.getRace(), 100, 260, 500, 450);
+            noFill();
+            noStroke();
+        }
+    }
+    //crim
+    public void loadCridata() 
+    {
+        Table table = loadTable("crim.csv", "header");
+        for (TableRow row : table.rows()) 
+        {
+            Planetdata criData = new Planetdata(row);
+            DataCri.add(criData);
+        }
+    }
+    public void drawCridata()
+    {
+        for(Planetdata criData : DataCri)
+        {
+            stroke(255);
+            fill(255);
+            textSize(20);
+            textAlign(LEFT);
+            text(criData.getName(), 0, 0);
+            text(criData.getAbout(), 100, 230);
+            text(criData.getRace(), 100, 260, 500, 450);
             noFill();
             noStroke();
         }
