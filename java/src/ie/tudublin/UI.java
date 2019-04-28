@@ -78,7 +78,7 @@ public class UI extends PApplet
         // elements.add(new Minimap(1280, 94, 140, 140, this));
         elements.add(new Box(1200, 0, 160, 180,this));
         elements.add(new Box(492, 139, 110, 480,this));
-        elements.add(new Box(2,518,278,247,this));
+        elements.add(new Box(7,456,278,310,this));
         but = new Button(this, 30, 30, 100,50 );
 
         //rectangles and button rectangle inside
@@ -184,7 +184,7 @@ public class UI extends PApplet
          noStroke();
          
 
-
+//sine wave
     }
     float sine(float x) {
       return k1*pow(k2/(k2+pow(x, 4)), k2)*cos(k3*x-l);
@@ -195,6 +195,9 @@ public class UI extends PApplet
     {
       float kx = 0.0f;
       float ky = width/2;
+      boolean overSig = false;
+      boolean locked = false;
+      int boxSize=130;
       for (float x=2;  x<width/5; x+=step)
       {
         float sx = map(x, 5, 300, -4, 8);    //sine x //processing.core.PApplet.map(float value, float start1, float stop1, float start2, float stop2)
@@ -207,8 +210,41 @@ public class UI extends PApplet
         kx = x;
         ky = y;
       }
+      if (mouseX > kx-boxSize && mouseX < kx+boxSize && 
+        mouseY > ky-boxSize && mouseY < ky+boxSize)
+    {
+      overSig = true;  
+      if(!locked) { 
+      for(float i = 0; i < 2; i++)
+      {       
+        for (float x=6;  x<width/6.5; x+=step)
+        {
+        
+        float sx = map(x, 0, 200, -4, 3);    //sine x //processing.core.PApplet.map(float value, float start1, float stop1, float start2, float stop2)
+        float sy = sine(sx);//sine y
+        float y = map(sy, -4, 0, height/0.5f, 650);//moves down page 
+        strokeWeight(2);
+        stroke(255, 255, 0); 
+        fill(0);
+        
+        line(kx, ky, x+(i*50f), y);
+        
+        kx = x+(i*50);
+        ky = y;
+        }
+      }
       l += 0.3;  
-      k3  += (k-k3)/200;
+      k3  += (k-k3)/500;
+      } 
+    } 
+    else {
+      stroke(255);
+      fill(255);
+      overSig = false;
+      }
+  
+      l += 0.3;  
+      k3  += (k-k3)/500;
     
     }
 

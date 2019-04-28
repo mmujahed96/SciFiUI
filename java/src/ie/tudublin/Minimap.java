@@ -6,7 +6,7 @@ import processing.core.PVector;
 public class Minimap extends UIElement
 {
     int size; // fields 
-   // float radius;
+    float radius;
     PVector pos;
     float frequency;
     float spin = 0;
@@ -19,7 +19,7 @@ public class Minimap extends UIElement
         this.size = size;
         this.frequency = frequency;
         pos = new PVector(x, y);
-        //this.radius = radius;
+        this.radius = radius;
         this.r = r;
         this.g = g;
         this.b = b;
@@ -32,7 +32,7 @@ public class Minimap extends UIElement
         ui.stroke(0, 200, 0);
         ui.translate(pos.x, pos.y);
         ui.rotate(spin);
-        ui.fill(r, g, b);
+        ui.fill(r, g, 0, 75);
         ui.ellipse(pos.x,pos.y,size, size); //circle for the suns
         ui.noFill();
         
