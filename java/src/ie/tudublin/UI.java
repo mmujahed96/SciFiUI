@@ -360,7 +360,7 @@ public class UI extends PApplet
              }else if (start == 3){ //earth
                 background(0);
                 but.backButton();
-                image(s2,width - 550 ,height - 700, 450,450);
+                image(s2,width/2 ,height/2, 450,450);
                 for(int e = 0; e < DataE.size(); e++)
                 {
                 drawEarthdata();
@@ -421,11 +421,11 @@ public class UI extends PApplet
         {
             stroke(255);
             fill(255);
-            textSize(20);
-            textAlign(LEFT);
-            text(eData.getName(), 0, 0);
+            textSize(12);
+            textAlign(RIGHT);
+            text(eData.getName(), 100, 100 );
             text(eData.getAbout(), 100, 230);
-            text(eData.getRace(), 100, 260, 500, 450);
+            text(eData.getSpecies(), 100, 260, 500, 450);
             noFill();
             noStroke();
         }
@@ -451,7 +451,7 @@ public class UI extends PApplet
             textAlign(LEFT);
             text(erupData.getName(), 0, 0);
             text(erupData.getAbout(), 100, 230);
-            text(erupData.getRace(), 100, 260, 500, 450);
+            text(erupData.getSpecies(), 100, 260, 500, 450);
             noFill();
             noStroke();
         }
@@ -473,10 +473,10 @@ public class UI extends PApplet
             stroke(255);
             fill(255);
             textSize(20);
-            textAlign(LEFT);
+            textAlign(RIGHT);
             text(kepData.getName(), 0, 0);
             text(kepData.getAbout(), 100, 230);
-            text(kepData.getRace(), 100, 260, 500, 450);
+            text(kepData.getSpecies(), 100, 260, 500, 450);
             noFill();
             noStroke();
         }
@@ -501,7 +501,7 @@ public class UI extends PApplet
             textAlign(LEFT);
             text(gliData.getName(), 0, 0);
             text(gliData.getAbout(), 100, 230);
-            text(gliData.getRace(), 100, 260, 500, 450);
+            text(gliData.getSpecies(), 100, 260, 500, 450);
             noFill();
             noStroke();
         }
@@ -523,10 +523,10 @@ public class UI extends PApplet
             stroke(255);
             fill(255);
             textSize(20);
-            textAlign(LEFT);
+            textAlign(RIGHT);
             text(criData.getName(), 0, 0);
             text(criData.getAbout(), 100, 230);
-            text(criData.getRace(), 100, 260, 500, 450);
+            text(criData.getSpecies(), 100, 260, 500, 450);
             noFill();
             noStroke();
         }

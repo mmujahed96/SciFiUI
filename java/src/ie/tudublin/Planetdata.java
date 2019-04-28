@@ -6,12 +6,12 @@ import processing.data.TableRow;
 public class Planetdata {
     private String name;
     private String about;
-    private String race;
+    private String species;
 
     public Planetdata(TableRow row)//constructor
     {   this.name = row.getString("Name");
         this.about = row.getString("About");
-        this.race = row.getString("Race");
+        this.species = row.getString("Species");
     }
 
 	/**
@@ -43,16 +43,16 @@ public class Planetdata {
 	}
 
 	/**
-	 * @return the race
+	 * @return the species
 	 */
-	public String getRace() {
-		return race;
+	public String getSpecies() {
+		return species;
 	}
 
 	/**
-	 * @param race the race to set
+	 * @param species the species to set
 	 */
-	public void setRace(String race) {
-		this.race = race;
+	public void setSpecies(String species) {
+		this.species = species;
 	}
 }
