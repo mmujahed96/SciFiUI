@@ -19,7 +19,7 @@ public class UI extends PApplet
     //ArrayList <Box> box = new ArrayList<Box>();
     private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  
     private ArrayList<Planetdata> DataErup = new ArrayList<Planetdata>();  
-    // private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  
+    private ArrayList<Planetdata> DataKep = new ArrayList<Planetdata>();  
     // private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  
     // private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  
     
@@ -45,20 +45,20 @@ public class UI extends PApplet
     float l = 15.0f;
     float step = 1;
 
-    public void keyPressed()
-    {
-        keys[keyCode] = true;
-    }
+    // public void keyPressed()
+    // {
+    //     keys[keyCode] = true;
+    // }
     
-    public void keyReleased()
-    {
-        keys[keyCode] = true;
-    }
+    // public void keyReleased()
+    // {
+    //     keys[keyCode] = true;
+    // }
 
-    public boolean checkKey(int c)
-    {
-        return keys[c] || keys [Character.toUpperCase(c)];
-    }
+    // public boolean checkKey(int c)
+    // {
+    //     return keys[c] || keys [Character.toUpperCase(c)];
+    // }
     
 
     public void settings()
@@ -116,6 +116,7 @@ public class UI extends PApplet
 
         loadEarthdata(); 
         loadErupdata();
+        loadKepdata();
     }
      
     
@@ -366,6 +367,10 @@ public class UI extends PApplet
                 background(0);
                 but.backButton();
                 image(s3,width - 550 ,height - 700, 450,450);
+                for(int e = 0; e < DataKep.size(); e++)
+            {
+                drawKepdata();
+            }
 
              }else if (start == 5){
                 background(0);
@@ -386,10 +391,10 @@ public class UI extends PApplet
     //     mc.render();
     //    ship.render();
 
-        if (checkKey(LEFT))
-        {
-            System.out.println("Left arrow key pressed");
-        }
+        // if (checkKey(LEFT))
+        // {
+        //     System.out.println("Left arrow key pressed");
+        // }
     }
     public void loadEarthdata() 
     {
@@ -437,6 +442,31 @@ public class UI extends PApplet
             text(erupData.getName(), 0, 0);
             text(erupData.getAbout(), 100, 230);
             text(erupData.getRace(), 100, 260, 500, 450);
+            noFill();
+            noStroke();
+        }
+    } 
+
+    public void loadKepdata() 
+    {
+        Table table = loadTable("kepler.csv", "header");
+        for (TableRow row : table.rows()) 
+        {
+            Planetdata kepData = new Planetdata(row);
+            DataKep.add(kepData);
+        }
+    }
+    public void drawKepdata()
+    {
+        for(Planetdata kepData : DataKep)
+        {
+            stroke(255);
+            fill(255);
+            textSize(20);
+            textAlign(LEFT);
+            text(kepData.getName(), 0, 0);
+            text(kepData.getAbout(), 100, 230);
+            text(kepData.getRace(), 100, 260, 500, 450);
             noFill();
             noStroke();
         }
