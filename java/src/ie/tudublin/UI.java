@@ -18,6 +18,10 @@ public class UI extends PApplet
 
     //ArrayList <Box> box = new ArrayList<Box>();
     private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  
+    private ArrayList<Planetdata> DataErup = new ArrayList<Planetdata>();  
+    // private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  
+    // private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  
+    // private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  
     
     MovingCircle mc;
     SpaceShip ship;
@@ -32,6 +36,8 @@ public class UI extends PApplet
     PImage s1,s2,s3,s4,s5;
     float radius = 0;
     //Minimap mini;
+
+    //for the sine wave
     float k = 10.0f;
     float k1 = 0.5f;
     float k2 = 0.5f;
@@ -109,6 +115,7 @@ public class UI extends PApplet
         stary = loadImage("bg.jpg");
 
         loadEarthdata(); 
+        loadErupdata();
     }
      
     
@@ -341,6 +348,10 @@ public class UI extends PApplet
                 text("Back", 132, 50);
                 noFill();
                 image(s1,width - 550 ,height - 700, 450,450);
+                for(int e = 0; e < DataErup.size(); e++)
+                {
+                drawErupdata();
+                }
 
              }else if (start == 3){ //earth
                 background(0);
@@ -400,6 +411,32 @@ public class UI extends PApplet
             text(eData.getName(), 0, 0);
             text(eData.getAbout(), 100, 230);
             text(eData.getRace(), 100, 260, 500, 450);
+            noFill();
+            noStroke();
+        }
+    } 
+
+
+    public void loadErupdata() 
+    {
+        Table table = loadTable("eruptus.csv", "header");
+        for (TableRow row : table.rows()) 
+        {
+            Planetdata erupData = new Planetdata(row);
+            DataErup.add(erupData);
+        }
+    }
+    public void drawErupdata()
+    {
+        for(Planetdata erupData : DataErup)
+        {
+            stroke(255);
+            fill(255);
+            textSize(20);
+            textAlign(LEFT);
+            text(erupData.getName(), 0, 0);
+            text(erupData.getAbout(), 100, 230);
+            text(erupData.getRace(), 100, 260, 500, 450);
             noFill();
             noStroke();
         }
