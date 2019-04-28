@@ -422,10 +422,10 @@ public class UI extends PApplet
             stroke(255);
             fill(255);
             textSize(15);
-            textAlign(RIGHT);
-            text(eData.getName(), 101, 223 );
-            text(eData.getAbout(), 101, 260, 500, 450 );
-            text(eData.getSpecies(), 101, 528 );
+            textAlign(LEFT);
+            text(eData.getName(), 712, 193 );
+            text(eData.getAbout(), 712, 210, 500, 450 );
+            text(eData.getSpecies(), 712, 553 );
             noFill();
             noStroke();
         }
@@ -449,9 +449,9 @@ public class UI extends PApplet
             fill(255);
             textSize(20);
             textAlign(LEFT);
-            text(erupData.getName(), 0, 0);
-            text(erupData.getAbout(),100, 260, 500, 450); 
-            text(erupData.getSpecies(), 100, 230);
+            text(erupData.getName(), 712, 193);
+            text(erupData.getAbout(),712, 282, 500, 450); 
+            text(erupData.getSpecies(), 712, 553);
             noFill();
             noStroke();
         }
@@ -473,10 +473,10 @@ public class UI extends PApplet
             stroke(255);
             fill(255);
             textSize(20);
-            textAlign(RIGHT);
-            text(kepData.getName(), 0, 0);
-            text(kepData.getAbout(), 100, 260, 500, 450);
-            text(kepData.getSpecies(), 100, 230);
+            textAlign(LEFT);
+            text(kepData.getName(), 712, 193);
+            text(kepData.getAbout(), 712, 282, 500, 450);
+            text(kepData.getSpecies(), 712, 553);
             noFill();
             noStroke();
         }
@@ -499,9 +499,9 @@ public class UI extends PApplet
             fill(255);
             textSize(20);
             textAlign(LEFT);
-            text(gliData.getName(), 0, 0);
-            text(gliData.getAbout(), 100, 260, 500, 450 );
-            text(gliData.getSpecies(), 100, 230);
+            text(gliData.getName(), 712, 193);
+            text(gliData.getAbout(), 712, 282, 500, 450 );
+            text(gliData.getSpecies(), 712, 533);
             noFill();
             noStroke();
         }
@@ -523,10 +523,10 @@ public class UI extends PApplet
             stroke(255);
             fill(255);
             textSize(20);
-            textAlign(RIGHT);
-            text(criData.getName(), 0, 0);
-            text(criData.getAbout(), 100, 260, 500, 450 );
-            text(criData.getSpecies(), 100, 230 );
+            textAlign(LEFT);
+            text(criData.getName(), 712, 193);
+            text(criData.getAbout(), 712, 282, 500, 450 );
+            text(criData.getSpecies(), 712, 533 );
             noFill();
             noStroke();
         }
