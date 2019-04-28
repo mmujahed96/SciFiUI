@@ -282,8 +282,15 @@ public class UI extends PApplet
             //background(stary);
             radar.render();
             radar.update();
+
+            //for the sine wave aka radio wave
             k=random(10, 15);
+            fill(169, 59, 171);
+            textSize(30);
+            text("Radio Signal",133 ,492);
             sinew();
+            noFill();
+            noStroke();
 
             for(Planets p: planets){
                 p.render();
