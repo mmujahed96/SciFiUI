@@ -421,11 +421,11 @@ public class UI extends PApplet
         {
             stroke(255);
             fill(255);
-            textSize(12);
+            textSize(15);
             textAlign(RIGHT);
-            text(eData.getName(), 100, 100 );
-            text(eData.getAbout(), 100, 230);
-            text(eData.getSpecies(), 100, 260, 500, 450);
+            text(eData.getName(), 101, 223 );
+            text(eData.getAbout(), 101, 260, 500, 450 );
+            text(eData.getSpecies(), 101, 528 );
             noFill();
             noStroke();
         }
@@ -450,8 +450,8 @@ public class UI extends PApplet
             textSize(20);
             textAlign(LEFT);
             text(erupData.getName(), 0, 0);
-            text(erupData.getAbout(), 100, 230);
-            text(erupData.getSpecies(), 100, 260, 500, 450);
+            text(erupData.getAbout(),100, 260, 500, 450); 
+            text(erupData.getSpecies(), 100, 230);
             noFill();
             noStroke();
         }
@@ -475,8 +475,8 @@ public class UI extends PApplet
             textSize(20);
             textAlign(RIGHT);
             text(kepData.getName(), 0, 0);
-            text(kepData.getAbout(), 100, 230);
-            text(kepData.getSpecies(), 100, 260, 500, 450);
+            text(kepData.getAbout(), 100, 260, 500, 450);
+            text(kepData.getSpecies(), 100, 230);
             noFill();
             noStroke();
         }
@@ -500,8 +500,8 @@ public class UI extends PApplet
             textSize(20);
             textAlign(LEFT);
             text(gliData.getName(), 0, 0);
-            text(gliData.getAbout(), 100, 230);
-            text(gliData.getSpecies(), 100, 260, 500, 450);
+            text(gliData.getAbout(), 100, 260, 500, 450 );
+            text(gliData.getSpecies(), 100, 230);
             noFill();
             noStroke();
         }
@@ -525,8 +525,8 @@ public class UI extends PApplet
             textSize(20);
             textAlign(RIGHT);
             text(criData.getName(), 0, 0);
-            text(criData.getAbout(), 100, 230);
-            text(criData.getSpecies(), 100, 260, 500, 450);
+            text(criData.getAbout(), 100, 260, 500, 450 );
+            text(criData.getSpecies(), 100, 230 );
             noFill();
             noStroke();
         }
