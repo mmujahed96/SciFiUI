@@ -9,26 +9,37 @@ public class MovingCircle
     private float y;
     private float diameter;
     private float radius;
+    private float z;
     UI ui;
 
-    public MovingCircle(UI ui, float x, float y, float diameter)
+    public MovingCircle(UI ui, float x, float y, float z, float diameter)
     {
         this.ui = ui;
         this.x = x;
         this.y = y;
+        this.z = z;
         this.diameter = diameter;
         radius = diameter / 2;
     }
     
     public void render()
     {
-        ui.stroke(255, 0, 255);
-        ui.noFill();
-        ui.ellipse(x, y, diameter, diameter);
-        ui.fill(255);
-        // Static field
-        ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-        ui.text("Loading", x, y);
+        // ui.pushMatrix();
+        // ui.translate(x,y,z);
+        // ui.noFill();
+        // ui.stroke(255);
+        // ui.sphere(280);
+        // ui.popMatrix();
+
+
+
+        // ui.stroke(255, 0, 255);
+        // ui.noFill();
+        // ui.ellipse(x, y, diameter, diameter);
+        // ui.fill(255);
+        // // Static field
+        // ui.textAlign(PApplet.CENTER, PApplet.CENTER);
+        // ui.text("Loading", x, y);
 
         //perpeler like drawing
         // for(int i =0; i< 3; i++) //  thickness of arc
