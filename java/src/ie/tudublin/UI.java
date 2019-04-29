@@ -50,20 +50,28 @@ public class UI extends PApplet
     float b1x = 35;
     float b1y = 139;
 
-    // public void keyPressed()
-    // {
-    //     keys[keyCode] = true;
-    // }
-    
-    // public void keyReleased()
-    // {
-    //     keys[keyCode] = true;
-    // }
+    public void keyPressed()
+    {
+        keys[keyCode] = true;
+        if(keyPressed)
+                {
+                    if (keyCode == ENTER ) //space bar
+                    {
+                        start = 1;
+                    }
+                }
 
-    // public boolean checkKey(int c)
-    // {
-    //     return keys[c] || keys [Character.toUpperCase(c)];
-    // }
+    }
+    
+    public void keyReleased()
+    {
+        keys[keyCode] = true;
+    }
+
+    public boolean checkKey(int c)
+    {
+        return keys[c] || keys [Character.toUpperCase(c)];
+    }
     
 
     public void settings()
@@ -141,11 +149,10 @@ public class UI extends PApplet
     public void mousePressed()
     {
        // int back = start -1;
-        if((mouseX > 632 && mouseX < 730) && (mouseY > 332 && mouseY < 432))//load screen
-        {
-            start = 1;
-        }
-        else if((mouseX > 332 && mouseX < 475) && (mouseY > 144 && mouseY < 192))//planet 1
+       // if((mouseX > 632 && mouseX < 730) && (mouseY > 332 && mouseY < 432))//load screen
+       
+       // start = 1;
+        if((mouseX > 332 && mouseX < 475) && (mouseY > 144 && mouseY < 192))//planet 1
         {
             start = 2;
         }else if((mouseX > 332 && mouseX < 475) && (mouseY > 206 && mouseY < 255)) //planet 2
