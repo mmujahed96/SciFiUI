@@ -39,6 +39,7 @@ public class UI extends PApplet
     float radius = 0;
     //Minimap mini;
     AudioPlayer sound, wSound;
+    Globe g;
     
 
 
@@ -152,7 +153,10 @@ public class UI extends PApplet
         wMinim = new Minim(this);
         // sounds[1] = minim.loadFile("Glitch Sound Effects.mp3");
         // sounds.play();
-    
+
+
+        //globe
+        //g = new Globe(50, this);//float x, float y, float lon, float lat, float radius , PApplet ui
     }
      
     public void mousePressed()
@@ -208,7 +212,7 @@ public class UI extends PApplet
         fill(0, 0, 255);
         textSize(15);
         textAlign(CENTER);
-        text("Press Here", cx, cy);
+        text("Press Enter", cx, cy);
         noFill();
         fill(0, 100);
         ellipse(cx, cy, spiral -250 , spiral - 250);
@@ -227,14 +231,36 @@ public class UI extends PApplet
         //    // ("Press here");
         // }
          noStroke();
-         
+    }     
+
+    public void globe(){
+        fill(255);
+        lights();
+        translate(width/2, height/2);
+        float radius = 250;
+        int t =100;
+        for(int i =0; i < t; i++)
+        {
+            float longitude = map(i, 0, t, -PI, PI);
+            for(int j = 0; j < t; j++)
+            {
+                float latitude = map( j, 0, t, -HALF_PI, HALF_PI);
+                float x = radius * sin(longitude) * cos(latitude);
+                float y = radius * sin(longitude) * sin(latitude);
+                float z = radius * cos(longitude);
+                stroke(255); 
+                strokeWeight(4);
+                point(x, y, z);
+            }
+        }
+    }
 
 //sine wave
-    }
-    float sine(float x) {
+    
+    public float sine(float x) {
       return k1*pow(k2/(k2+pow(x, 4)), k2)*cos(k3*x-l);
     }
-    void sinew()
+    public void sinew()
     {
       float kx = 0.0f;
       float ky = width/2;
@@ -274,14 +300,15 @@ public class UI extends PApplet
         
         kx = x+(i*50);
         ky = y;
-        }
-        // wSound = minim.loadFile("Glitch Sound Effects.mp3");
-        // wSound.play();
-      }
+        }//end for
+        
+      }//end for
       l += 0.3;  
       k3  += (k-k3)/500;
-      } 
-    } 
+      }//end if stat
+      wSound = minim.loadFile("Glitch Sound Effects.mp3");
+        wSound.play(); 
+    } // end if statment 
     else {
       stroke(255);
       fill(255);
@@ -323,6 +350,9 @@ public class UI extends PApplet
             radar.update();
             //fan.render();
             
+            
+
+    
 
             //for the sine wave aka radio wave
             k=random(10, 15);
@@ -376,6 +406,9 @@ public class UI extends PApplet
             {
                 f.render();
             }
+            bg.render();    
+           // g.render();
+           globe();
             
 
         }else if (start == 2){ //eruptus
