@@ -25,7 +25,7 @@ public class Planets extends UIElement
 
     public void render()
     {
-        ui.strokeWeight(1);
+        ui.strokeWeight(2);
         ui.stroke(77, 242, 217);
         ui.lights();
         //ui.line(height/2, , size , size);

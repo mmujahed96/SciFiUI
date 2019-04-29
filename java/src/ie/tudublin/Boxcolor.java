@@ -25,7 +25,7 @@ public class Boxcolor extends UIElement
             for(int sqx = 0; sqx < y + width; sqx = sqx+20)
             {
                 float qw = ui.dist(sqx, sqy, ui.mouseX, ui.mouseY);
-                ui.fill(qw/1.7f,ui.random(255),ui.random(255));
+                ui.fill(qw/1.0f,ui.random(50),ui.random(150));
                 ui.rect(x + sqx, y + sqy, 50, 10);
             }
         }

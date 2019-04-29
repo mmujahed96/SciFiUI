@@ -315,10 +315,14 @@ public class UI extends PApplet
             noFill();
             noStroke();
 
+            for (int i=0;i<2;i++)
+            {
+                b1[i].render();
+            }
+
             for(Planets p: planets){
                 p.render();
-                fill(255);
-                ellipse(width, 300, radius*2, radius*2);
+                
                 
             }
             for(Planets pb: planets){
@@ -356,10 +360,7 @@ public class UI extends PApplet
             {
                 f.render();
             }
-            for (int i=0;i<2;i++)
-            {
-                b1[i].render();
-            }
+            
 
         }else if (start == 2){ //eruptus
             background(0);
