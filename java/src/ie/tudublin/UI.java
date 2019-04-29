@@ -1,7 +1,7 @@
 package ie.tudublin;
 
 import java.util.ArrayList;
-
+import ddf.minim.*;
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.data.Table;
@@ -9,6 +9,7 @@ import processing.data.TableRow;
 
 public class UI extends PApplet
 {
+    Minim minim, wMinim;    
     ArrayList <UIElement> elements = new ArrayList<UIElement>();
     ArrayList <Button> button = new ArrayList<Button>();
     ArrayList <Planets> planets = new ArrayList<Planets>();
@@ -16,6 +17,8 @@ public class UI extends PApplet
     ArrayList <Minimap> lines = new ArrayList<Minimap>();
     ArrayList <Minimap> mini = new ArrayList<Minimap>();
     ArrayList <Fan> fan = new ArrayList<Fan>();
+    //AudioPlayer[] sounds = new AudioPlayer[5];
+    Boxcolor[] b1 = new Boxcolor[5];
 
     //ArrayList <Box> box = new ArrayList<Box>();
     private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  //earth data
@@ -25,10 +28,8 @@ public class UI extends PApplet
     private ArrayList<Planetdata> DataCri = new ArrayList<Planetdata>();  //crim data
     
     MovingCircle mc;
-    
     Radar radar;
     Background bg;
-    
     int start = 0;
     boolean[] keys = new boolean[1024];
     PImage stary;
@@ -37,7 +38,9 @@ public class UI extends PApplet
     PImage s1,s2,s3,s4,s5;
     float radius = 0;
     //Minimap mini;
-    Boxcolor[] b1 = new Boxcolor[5];
+    AudioPlayer sound, wSound;
+    
+
 
     //for the sine wave
     float k = 10.0f;
@@ -78,7 +81,7 @@ public class UI extends PApplet
     {
         //size(800, 800);
         // Use fullscreen instead of size to make your interface fullscreen
-        fullScreen(); 
+        fullScreen(P3D); 
     }
 
     public void setup()
@@ -144,6 +147,12 @@ public class UI extends PApplet
         loadKepdata();
         loadGlidata(); 
         loadCridata();
+
+        minim = new Minim(this);
+        wMinim = new Minim(this);
+        // sounds[1] = minim.loadFile("Glitch Sound Effects.mp3");
+        // sounds.play();
+    
     }
      
     public void mousePressed()
@@ -266,6 +275,8 @@ public class UI extends PApplet
         kx = x+(i*50);
         ky = y;
         }
+        // wSound = minim.loadFile("Glitch Sound Effects.mp3");
+        // wSound.play();
       }
       l += 0.3;  
       k3  += (k-k3)/500;
@@ -329,8 +340,6 @@ public class UI extends PApplet
 
             for(Planets p: planets){
                 p.render();
-                
-                
             }
             for(Planets pb: planets){
                 fill(58, 59, 171);
@@ -418,16 +427,6 @@ public class UI extends PApplet
                 drawCridata();
             }
         }
-        //button.mousePressed();
-        
-    //    mc.update();
-    //     mc.render();
-    //    ship.render();
-
-        // if (checkKey(LEFT))
-        // {
-        //     System.out.println("Left arrow key pressed");
-        // }
     }
     public void loadEarthdata() 
     {
