@@ -86,9 +86,9 @@ public class UI extends PApplet
         // elements.add(new Minimap(1280, 94, 100, 100,this));
         // elements.add(new Minimap(1280, 94, 30, 30, this));
         // elements.add(new Minimap(1280, 94, 140, 140, this));
-        elements.add(new Box(1200, 0, 160, 180,this));
-        elements.add(new Box(492, 139, 110, 480,this));
-        elements.add(new Box(7,456,278,310,this));
+        elements.add(new Box(1150, 4, 210, 220,this)); // mini map box
+        //elements.add(new Box(492, 139, 110, 480,this));
+        elements.add(new Box(30,454,248,310,this)); //sine wave box
         but = new Button(this, 30, 30, 100,50 );
 
         //rectangles and button rectangle inside
@@ -109,7 +109,7 @@ public class UI extends PApplet
         for(int i = 0; i < 5; i++)
         {
             //int space = 10;   
-            Fan f = new Fan(100 +(i*100), 46, 75, 75, this);
+            Fan f = new Fan(350 +(i*100), 710, 100, 100, this);
             fan.add(f);
         }
         //img
