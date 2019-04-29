@@ -25,7 +25,7 @@ public class UI extends PApplet
     private ArrayList<Planetdata> DataCri = new ArrayList<Planetdata>();  //crim data
     
     MovingCircle mc;
-    SpaceShip ship;
+    
     Radar radar;
     Background bg;
     
@@ -37,6 +37,7 @@ public class UI extends PApplet
     PImage s1,s2,s3,s4,s5;
     float radius = 0;
     //Minimap mini;
+    Boxcolor[] b1 = new Boxcolor[5];
 
     //for the sine wave
     float k = 10.0f;
@@ -45,6 +46,9 @@ public class UI extends PApplet
     float k3 = 10.0f;
     float l = 15.0f;
     float step = 1;
+
+    float b1x = 35;
+    float b1y = 139;
 
     // public void keyPressed()
     // {
@@ -77,7 +81,6 @@ public class UI extends PApplet
         button.add(new Button(this,width/2, height/2, 400, 400));
         button.add(new Button(this,width/2, height/2, 330, 330));
         // mc = new MovingCircle(this, width / 2, height / 2, 50);
-        // ship = new SpaceShip(30, 100, 600, this);
         radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
         bg = new Background(100, 100 , 30,this);
        // mini.add(new Minimap(1280, 94, 0.4f, 50, this);//(float x, float y, int size, float frequency, float radius , float r, float g, float b, PApplet ui
@@ -111,6 +114,13 @@ public class UI extends PApplet
             //int space = 10;   
             Fan f = new Fan(350 +(i*100), 710, 100, 100, this);
             fan.add(f);
+        }
+
+        for(int i =0; i < 5; i++)
+        {
+            b1[i] = new Boxcolor(b1x,b1y, 115, 168, this);
+            // b1y += 10;
+            // b1x += 10;
         }
         //img
         s1 = loadImage("exo.jpg");
@@ -346,6 +356,11 @@ public class UI extends PApplet
             {
                 f.render();
             }
+            for (int i=0;i<2;i++)
+            {
+                b1[i].render();
+            }
+
         }else if (start == 2){ //eruptus
             background(0);
             but.backButton();
