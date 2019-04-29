@@ -4,7 +4,6 @@ package ie.tudublin;
 import processing.core.PApplet;
 
 public class Circle extends UIElement
-
 {
 
     private float diameter;

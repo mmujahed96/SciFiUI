@@ -15,6 +15,7 @@ public class UI extends PApplet
     ArrayList <Circle> circle = new ArrayList<Circle>();
     ArrayList <Minimap> lines = new ArrayList<Minimap>();
     ArrayList <Minimap> mini = new ArrayList<Minimap>();
+    ArrayList <Fan> fan = new ArrayList<Fan>();
 
     //ArrayList <Box> box = new ArrayList<Box>();
     private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  //earth data
@@ -27,12 +28,12 @@ public class UI extends PApplet
     SpaceShip ship;
     Radar radar;
     Background bg;
-    //Circle cir;
-    //Planets plan;
+    
     int start = 0;
     boolean[] keys = new boolean[1024];
     PImage stary;
     Button but;
+    //Fan fan;
     PImage s1,s2,s3,s4,s5;
     float radius = 0;
     //Minimap mini;
@@ -80,7 +81,8 @@ public class UI extends PApplet
         radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
         bg = new Background(100, 100 , 30,this);
        // mini.add(new Minimap(1280, 94, 0.4f, 50, this);//(float x, float y, int size, float frequency, float radius , float r, float g, float b, PApplet ui
-        mini.add(new Minimap(1280, 94, 0.4f, 50, 116, 0, 255, this));
+        //mini.add(new Minimap(1280, 94, 0.4f, 50, 116, 0, 255, this));
+        mini.add(new Minimap(1280, 94, 50, 100, this));
         // elements.add(new Minimap(1280, 94, 100, 100,this));
         // elements.add(new Minimap(1280, 94, 30, 30, this));
         // elements.add(new Minimap(1280, 94, 140, 140, this));
@@ -96,7 +98,6 @@ public class UI extends PApplet
             Planets pb = new Planets(332 ,144 +(i*62) , 144, 50, this);
             planets.add(p);
             planets.add(pb);
-            
         }
         //circles with percentages
         for(int i = 0; i < 3; i++)
@@ -104,7 +105,12 @@ public class UI extends PApplet
             int text = (int)random(50,100);
             Circle cir = new Circle(100 +(i*100), 46, 75, 75, text, this);
             circle.add(cir);
-            
+        }
+        for(int i = 0; i < 5; i++)
+        {
+            //int space = 10;   
+            Fan f = new Fan(100 +(i*100), 46, 75, 75, this);
+            fan.add(f);
         }
         //img
         s1 = loadImage("exo.jpg");
@@ -122,32 +128,30 @@ public class UI extends PApplet
         loadCridata();
     }
      
-    
-     public void mousePressed()
-     {
+    public void mousePressed()
+    {
        // int back = start -1;
-         if((mouseX > 632 && mouseX < 730) && (mouseY > 332 && mouseY < 432))//load screen
-         {
+        if((mouseX > 632 && mouseX < 730) && (mouseY > 332 && mouseY < 432))//load screen
+        {
             start = 1;
-            
-         }
-         else if((mouseX > 332 && mouseX < 475) && (mouseY > 144 && mouseY < 192))//planet 1
+        }
+        else if((mouseX > 332 && mouseX < 475) && (mouseY > 144 && mouseY < 192))//planet 1
+        {
+            start = 2;
+        }else if((mouseX > 332 && mouseX < 475) && (mouseY > 206 && mouseY < 255)) //planet 2
          {
-             start = 2;
-         }else if((mouseX > 332 && mouseX < 475) && (mouseY > 206 && mouseY < 255)) //planet 2
-         {
-             start = 3;
-         }else if((mouseX > 332 && mouseX < 475) && (mouseY > 268 && mouseY < 317))//planet 3
-         {
-             start = 4;
-         }else if((mouseX > 332 && mouseX < 475) && (mouseY > 330 && mouseY < 379))//planet 4
-         {
-             start = 5;
-         }else if ((mouseX > 332 && mouseX < 475) && (mouseY > 393 && mouseY < 441))//planet 5
-         {
-             start = 6;
-         }
-     }
+            start = 3;
+        }else if((mouseX > 332 && mouseX < 475) && (mouseY > 268 && mouseY < 317))//planet 3
+        {
+            start = 4;
+        }else if((mouseX > 332 && mouseX < 475) && (mouseY > 330 && mouseY < 379))//planet 4
+        {
+            start = 5;
+        }else if ((mouseX > 332 && mouseX < 475) && (mouseY > 393 && mouseY < 441))//planet 5
+        {
+            start = 6;
+        }
+    }
     
     float spiral = 0; 
     int i = 0;
@@ -203,8 +207,6 @@ public class UI extends PApplet
     }
     float sine(float x) {
       return k1*pow(k2/(k2+pow(x, 4)), k2)*cos(k3*x-l);
-     
-     
     }
     void sinew()
     {
@@ -256,24 +258,19 @@ public class UI extends PApplet
       stroke(255);
       fill(255);
       overSig = false;
-      }
-  
-      l += 0.3;  
-      k3  += (k-k3)/500;
-    
+    }    
+        l += 0.3;  
+        k3  += (k-k3)/500;
     }
 
 
     public void draw()
-    {
-        
+    {   
         background(0);
         
         line(20,20, mouseX, mouseY);
         println(mouseX, mouseY); // find out xy co-ordinate line of infinate length from one point to x and y of my mouse
-       // bg.map();
         bg.render();
-        
         // if(begin == false){
         //     //background(stary);
         //     noStroke();
@@ -285,18 +282,19 @@ public class UI extends PApplet
         //     loading();
         // }
         // else 
-         if (start == 0){
+        if (start == 0){
             loading();
             for(int b = 0; b < button.size(); b++)
-                {
-                    
-                    button.get(b).render();
-                    //button.mousePressed();
+            {
+                button.get(b).render();
+                //button.mousePressed();
             }      
         }else if (start == 1){
-            //background(stary);
+        //background(stary);
             radar.render();
             radar.update();
+            //fan.render();
+            
 
             //for the sine wave aka radio wave
             k=random(10, 15);
@@ -310,7 +308,7 @@ public class UI extends PApplet
             for(Planets p: planets){
                 p.render();
                 fill(255);
-                 ellipse(width, 300, radius*2, radius*2);
+                ellipse(width, 300, radius*2, radius*2);
                 
             }
             for(Planets pb: planets){
@@ -322,79 +320,81 @@ public class UI extends PApplet
                 text("KEPLER",400 ,292);
                 text("GLIESE",400 ,351);
                 text("CRIM", 400 ,414);
-                
             }
-                for(Circle cr: circle)
+            for(Circle cr: circle)
                 {
-                    noFill();
-                    textSize(15);
-                    cr.render();
-                    text("Oxygen",100, 100);
-                    text("Feul",200,100);
-                    text("Water Supply", 300, 100);
-                }
-
-                for(int m = 0; m < mini.size(); m++)
-                {
-                    mini.get(m).render();
-                    mini.get(m).move();
-                }
-                    for(int x = 0; x < elements.size(); x++){
-                        elements.get(x).render();
-                    }
-
-             }else if (start == 2){ //eruptus
-                background(0);
-                but.backButton();
-                fill(0, 0, 255);
-                textSize(20);
-                textAlign(CENTER);
-                text("Back", 132, 50);
                 noFill();
-                image(s1,width - 550 ,height - 700, 450,450);
-                for(int e = 0; e < DataErup.size(); e++)
-                {
-                drawErupdata();
-                }
+                textSize(15);
+                cr.render();
+                text("Oxygen",100, 100);
+                text("Feul",200,100);
+                text("Water Supply", 300, 100);
+            }
 
-             }else if (start == 3){ //earth
-                background(0);
-                but.backButton();
-                image(s2,width/2 ,height/2, 450,450);
-                for(int e = 0; e < DataE.size(); e++)
-                {
+            for(int m = 0; m < mini.size(); m++)
+            {
+                mini.get(m).render();
+                //mini.get(m).move();
+            }
+            //boxes
+            for(int x = 0; x < elements.size(); x++)
+            {
+                elements.get(x).render();
+            }
+            //fan
+            for(Fan f: fan)
+            {
+                f.render();
+            }
+        }else if (start == 2){ //eruptus
+            background(0);
+            but.backButton();
+            fill(0, 0, 255);
+            textSize(20);
+            textAlign(CENTER);
+            text("Back", 132, 50);
+            noFill();
+            image(s1,width - 550 ,height - 700, 450,450);
+            for(int e = 0; e < DataErup.size(); e++)
+            {
+            drawErupdata();
+            }
+
+        }else if (start == 3){ //earth
+            background(0);
+            but.backButton();
+            image(s2,width/2 ,height/2, 450,450);
+            for(int e = 0; e < DataE.size(); e++)
+            {
                 drawEarthdata();
-                }
-                
-             }else if (start == 4){
-                background(0);
-                but.backButton();
-                image(s3,width - 550 ,height - 700, 450,450);
-                for(int e = 0; e < DataKep.size(); e++)
+            }
+
+        }else if (start == 4){
+            background(0);
+            but.backButton();
+            image(s3,width - 550 ,height - 700, 450,450);
+            for(int e = 0; e < DataKep.size(); e++)
             {
                 drawKepdata();
             }
 
-             }else if (start == 5){
-                background(0);
-                but.backButton();
-                image(s4,width - 550 ,height - 700, 450,450);
-                for(int e = 0; e < DataGli.size(); e++)
-                {
+        }else if (start == 5){
+            background(0);
+            but.backButton();
+            image(s4,width - 550 ,height - 700, 450,450);
+            for(int e = 0; e < DataGli.size(); e++)
+            {
                 drawGlidata();
-                }
-             }else if (start == 6){
-                background(0);
-                but.backButton();
-                image(s5,width - 550 ,height - 700, 450,450);
-                for(int e = 0; e < DataCri.size(); e++)
-                {
+            }
+        }else if (start == 6){
+            background(0);
+            but.backButton();
+            image(s5,width - 550 ,height - 700, 450,450);
+            for(int e = 0; e < DataCri.size(); e++)
+            {
                 drawCridata();
-                }
-             }
-            
-         
-       
+            }
+        }
         //button.mousePressed();
         
     //    mc.update();
