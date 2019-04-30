@@ -448,7 +448,7 @@ public class UI extends PApplet
            //arcs around globe
            arglobe.render();
            globe();
-           bg.render();
+           //bg.render();
            //bg.render(); 
            
 
