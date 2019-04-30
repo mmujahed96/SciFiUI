@@ -1,11 +1,13 @@
 package ie.tudublin;
 
 import java.util.ArrayList;
-import ddf.minim.*;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.data.Table;
 import processing.data.TableRow;
+import ddf.minim.AudioPlayer;
+import ddf.minim.*;
 
 public class UI extends PApplet
 {
@@ -64,6 +66,9 @@ public class UI extends PApplet
                     {
                         start = 1;
                     }
+                }if (keyCode == BACKSPACE)
+                {
+                    start = 1;
                 }
 
     }
@@ -98,7 +103,7 @@ public class UI extends PApplet
         bg = new Background(100, 100 , 30,this);
        // mini.add(new Minimap(1280, 94, 0.4f, 50, this);//(float x, float y, int size, float frequency, float radius , float r, float g, float b, PApplet ui
         //mini.add(new Minimap(1280, 94, 0.4f, 50, 116, 0, 255, this));
-        mini.add(new Minimap(1280, 94, 50, 100, this));
+        mini.add(new Minimap(1280, 94, 50, this));
         // elements.add(new Minimap(1280, 94, 100, 100,this));
         // elements.add(new Minimap(1280, 94, 30, 30, this));
         // elements.add(new Minimap(1280, 94, 140, 140, this));
@@ -108,6 +113,13 @@ public class UI extends PApplet
         but = new Button(this, 30, 30, 100,50 );
         arglobe = new Globe(780, 350, PI + 1.2f, PI / 6, PI + 1.6f, PI / 4, PI + 0.7f, this);
 
+        for(int i = 0; i < 5; i++)
+        {
+            Minimap ni = new Minimap(1280 ,44 , 450+(i*-10), this);
+           // Planets pb = new Planets(332 ,144 +(i*62) , 144, 50, this);
+            mini.add(ni);
+            //planets.add(pb);
+        }
         //rectangles and button rectangle inside
         for(int i = 0; i < 5; i++)
         {
@@ -183,6 +195,9 @@ public class UI extends PApplet
         if((mouseX > 332 && mouseX < 475) && (mouseY > 144 && mouseY < 192))//planet 1
         {
             start = 2;
+            // sound = minim.loadFile("GUI_Select_22.wav");
+            // sound.play();
+           
         }else if((mouseX > 332 && mouseX < 475) && (mouseY > 206 && mouseY < 255)) //planet 2
          {
             start = 3;
@@ -251,9 +266,11 @@ public class UI extends PApplet
     public void globe(){
         fill(255);
         lights();
-        translate(767, 365);
+        translate(767, 365, 100);
         float radius = 150;
         int t =100;
+        rotateX((mouseX)/ width * 2 *PI);
+        rotateY((frameCount)/50);
         for(int i =0; i < t; i++)
         {
             float longitude = map(i, 0, t, -PI, PI);
@@ -317,21 +334,24 @@ public class UI extends PApplet
         kx = x+(i*50);
         ky = y;
         }//end for
-        
+        wSound = wMinim.loadFile("Glitch Sound Effects.mp3");
+        wSound.play(); 
       }//end for
       l += 0.3;  
       k3  += (k-k3)/500;
       }//end if stat
-      wSound = minim.loadFile("Glitch Sound Effects.mp3");
-        wSound.play(); 
+      
+         
     } // end if statment 
     else {
+        
       stroke(255);
       fill(255);
       overSig = false;
     }    
         l += 0.3;  
         k3  += (k-k3)/500;
+        //wSound.pause();
     }
 
 
@@ -341,7 +361,7 @@ public class UI extends PApplet
         
         line(20,20, mouseX, mouseY);
         println(mouseX, mouseY); // find out xy co-ordinate line of infinate length from one point to x and y of my mouse
-        bg.render();
+        //bg.render();
         // if(begin == false){
         //     //background(stary);
         //     noStroke();
@@ -421,17 +441,19 @@ public class UI extends PApplet
             //fan
             for(Fan f: fan)
             {
+                
                 f.render();
             }
-            bg.render();    
 
            //arcs around globe
            arglobe.render();
            globe();
-            
+           //bg.render(); 
+           
 
         }else if (start == 2){ //eruptus
             background(0);
+            bg.render(); 
             but.backButton();
             fill(0, 0, 255);
             textSize(20);
