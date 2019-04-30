@@ -99,11 +99,12 @@ public class UI extends PApplet
         button.add(new Button(this,width/2, height/2, 330, 330));
         // mc = new MovingCircle(this, width / 2, height / 2, 50);
         radar = new Radar(this, 0.4f, 404, 562, 75 );//UI ui, float frequency, float x, float y, float radius
-        bg = new Background(100, 100 , 30,this);
+        bg = new Background(1031, 497, 30,this);
         // elements.add(new Minimap(1280, 94, 100, 100,this));
         // elements.add(new Minimap(1280, 94, 30, 30, this));
         // elements.add(new Minimap(1280, 94, 140, 140, this));
         elements.add(new Box(1150, 4, 210, 220,this)); // mini map box
+        elements.add(new Box(1047,428,300,330,this));
         elements.add(new Box(30,454,248,310,this)); //sine wave box
         arglobe = new Globe(780, 350, PI + 1.2f, PI / 6, PI + 1.6f, PI / 4, PI + 0.7f, this);
 
@@ -145,10 +146,10 @@ public class UI extends PApplet
         }
 
         //fan 
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 6; i++)
         {
             //int space = 10;   
-            Fan f = new Fan(350 +(i*100), 710, 100, 100, this);
+            Fan f = new Fan(413 +(i*100), 710, 100, 100, this);
             fan.add(f);
         }
         //inside planet rectangles change color
@@ -380,6 +381,7 @@ public class UI extends PApplet
                 text("GLIESE",400 ,351);
                 text("CRIM", 400 ,414);
             }
+            bg.render();
             for(Circle cr: circle)
                 {
                 noFill();
@@ -415,7 +417,6 @@ public class UI extends PApplet
 
         }else if (start == 2){ //eruptus
             background(0);
-            bg.render(); 
             image(s1,width - 1250 ,height - 600, 450,350);
             for(int e = 0; e < DataErup.size(); e++)
             {
