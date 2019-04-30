@@ -1,6 +1,7 @@
 package ie.tudublin;
 
 import java.util.ArrayList;
+
 import ddf.minim.AudioPlayer;
 import ddf.minim.AudioInput;
 import ddf.minim.Minim;
@@ -13,7 +14,6 @@ import processing.data.TableRow;
 
 public class UI extends PApplet
 {
-    Minim minim, wMinim;    
     ArrayList <UIElement> elements = new ArrayList<UIElement>();
     ArrayList <Button> button = new ArrayList<Button>();
     ArrayList <Planets> planets = new ArrayList<Planets>();
@@ -21,7 +21,7 @@ public class UI extends PApplet
     ArrayList <Minimap> lines = new ArrayList<Minimap>();
     ArrayList <Minimap> mini = new ArrayList<Minimap>();
     ArrayList <Fan> fan = new ArrayList<Fan>();
-    AudioPlayer[] sounds = new AudioPlayer[3];
+    //AudioPlayer[] sounds = new AudioPlayer[3];
     Boxcolor[] b1 = new Boxcolor[5];
 
     private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  //earth data
@@ -41,12 +41,12 @@ public class UI extends PApplet
     //Fan fan;
     PImage s1,s2,s3,s4,s5;
     float radius = 0;
-    //Minimap mini;
-    AudioPlayer sound, wSound;
     Globe arglobe;
-
-    
-
+      
+    AudioPlayer ClickSound, SatSound; // for planets and sine
+    AudioPlayer LoadSound, EnterSound;
+    Minim minim;  
+    AudioInput ai;
 
     //for the sine wave
     float k = 10.0f;
@@ -67,6 +67,11 @@ public class UI extends PApplet
                     if (keyCode == ENTER ) //space bar
                     {
                         start = 1;
+                        // if(!EnterSound.isPlaying())
+                        // {
+                        //     //EnterSound.rewind();
+                        //     EnterSound.play();
+                        // }
                     }
                 }if (keyCode == BACKSPACE)
                 {
@@ -194,12 +199,11 @@ public class UI extends PApplet
         loadInfoText();
 
         minim = new Minim(this);
-        wMinim = new Minim(this);
-        sounds[1] = minim.loadFile("GUI_Select_22.mp3");
-        sounds[2] = minim.loadFile("GUI_Notification 13");
-        sounds[2] = minim.loadFile("GUI_Notification 14");
-        // sounds.play()
-        //sound = minim.loadFile("GUI_Select_22.mp3");
+        ClickSound = minim.loadFile("GUI_Select_22.mp3");
+        EnterSound = minim.loadFile("GUI_Notification 13.mp3");
+        LoadSound = minim.loadFile("GUI_Notification 14.mp3");
+        SatSound = minim.loadFile("Glitch Sound Effects.mp3");
+        
     }
      
     public void mousePressed()
@@ -339,8 +343,9 @@ public class UI extends PApplet
         kx = x+(i*50);
         ky = y;
         }//end for
-        wSound = wMinim.loadFile("Glitch Sound Effects.mp3");
-        wSound.play(); 
+        if(!SatSound.isPlaying()){
+            SatSound.play(); 
+        }
       }//end for
       l += 0.3;  
       k3  += (k-k3)/500;
@@ -351,11 +356,13 @@ public class UI extends PApplet
         
       stroke(255);
       fill(255);
+      if(SatSound.isPlaying()){
+        SatSound.pause();
+    }
       overSig = false;
     }    
         l += 0.3;  
         k3  += (k-k3)/500;
-        //wSound.pause();
     }
 
 
@@ -371,15 +378,20 @@ public class UI extends PApplet
             for(int b = 0; b < button.size(); b++)
             {
                 button.get(b).render();
-            }      
+            }  
+            // if(!LoadSound.isPlaying())
+            // {
+            //     LoadSound.rewind();
+            //     LoadSound.play();
+            // }    
         }else if (start == 1){
             
             radar.render();
-
             radar.update();
            
             //for the sine wave aka radio wave
             k=random(10, 15);
+
             sinew();
             
 
@@ -442,6 +454,11 @@ public class UI extends PApplet
 
         }else if (start == 2){ //eruptus
             background(0);
+            // if(!ClickSound.isPlaying())
+            // {
+            //    // ClickSound.rewind();
+            //     ClickSound.play();
+            // }
             image(s1,width - 1250 ,height - 600, 450,350);
             for(int e = 0; e < DataErup.size(); e++)
             {
