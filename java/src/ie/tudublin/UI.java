@@ -1,13 +1,15 @@
 package ie.tudublin;
 
 import java.util.ArrayList;
-
+import ddf.minim.AudioPlayer;
+import ddf.minim.AudioInput;
+import ddf.minim.Minim;
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.data.Table;
 import processing.data.TableRow;
-import ddf.minim.AudioPlayer;
-import ddf.minim.*;
+
+
 
 public class UI extends PApplet
 {
@@ -19,7 +21,7 @@ public class UI extends PApplet
     ArrayList <Minimap> lines = new ArrayList<Minimap>();
     ArrayList <Minimap> mini = new ArrayList<Minimap>();
     ArrayList <Fan> fan = new ArrayList<Fan>();
-    //AudioPlayer[] sounds = new AudioPlayer[5];
+    AudioPlayer[] sounds = new AudioPlayer[3];
     Boxcolor[] b1 = new Boxcolor[5];
 
     private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  //earth data
@@ -27,7 +29,8 @@ public class UI extends PApplet
     private ArrayList<Planetdata> DataKep = new ArrayList<Planetdata>();  //keplet data
     private ArrayList<Planetdata> DataGli = new ArrayList<Planetdata>();  //gliese data
     private ArrayList<Planetdata> DataCri = new ArrayList<Planetdata>();  //crim data
-    
+    private ArrayList<Text> Textinfo = new ArrayList<Text>();
+
     MovingCircle mc;
     Radar radar;
     Background bg;
@@ -99,21 +102,20 @@ public class UI extends PApplet
         button.add(new Button(this,width/2, height/2, 330, 330));
         // mc = new MovingCircle(this, width / 2, height / 2, 50);
         radar = new Radar(this, 0.4f, 404, 562, 75 );//UI ui, float frequency, float x, float y, float radius
-        bg = new Background(1031, 497, 30,this);
-        // elements.add(new Minimap(1280, 94, 100, 100,this));
-        // elements.add(new Minimap(1280, 94, 30, 30, this));
-        // elements.add(new Minimap(1280, 94, 140, 140, this));
+        bg = new Background(0, 0, 30,this);
         elements.add(new Box(1150, 4, 210, 220,this)); // mini map box
-        elements.add(new Box(1047,428,300,330,this));
+        elements.add(new Box(1047,428,300,330,this));// info box
+        elements.add(new Box(1051,436,290,315,this));
         elements.add(new Box(30,454,248,310,this)); //sine wave box
         arglobe = new Globe(780, 350, PI + 1.2f, PI / 6, PI + 1.6f, PI / 4, PI + 0.7f, this);
 
+        //lines for the orbit
         for(int i = 0; i < 5; i++)
         {
             Minimap ni = new Minimap(1256 ,114 , 200+(i*-35), this);
             lines.add(ni);
-            
         }
+        //2 large planets 
         for(int i = 0; i < 2; i++)
         {
             
@@ -121,6 +123,7 @@ public class UI extends PApplet
             lines.add(ni);
             
         }
+        //2 smaller planets to the Star(sun) in the middle
         for(int i = 0; i < 2; i++)
         {
             
@@ -138,7 +141,7 @@ public class UI extends PApplet
             planets.add(pb);
         }
         //circles with percentages
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < 4; i++)
         {
             int text = (int)random(50,100);
             Circle cir = new Circle(100 +(i*100), 46, 75, 75, text, this);
@@ -180,7 +183,7 @@ public class UI extends PApplet
         s3 = loadImage("gliese667c.jpg");
         s4 = loadImage("Kepler62f.jpg");
         s5 = loadImage("HWVir.jpg");
-        stary = loadImage("bg.jpg");
+        //stary = loadImage("bg.jpg");
 
         //planet info
         loadEarthdata(); 
@@ -188,23 +191,23 @@ public class UI extends PApplet
         loadKepdata();
         loadGlidata(); 
         loadCridata();
+        loadInfoText();
 
         minim = new Minim(this);
         wMinim = new Minim(this);
-        // sounds[1] = minim.loadFile("Glitch Sound Effects.mp3");
+        sounds[1] = minim.loadFile("GUI_Select_22.mp3");
+        sounds[2] = minim.loadFile("GUI_Notification 13");
+        sounds[2] = minim.loadFile("GUI_Notification 14");
         // sounds.play()
+        //sound = minim.loadFile("GUI_Select_22.mp3");
     }
      
     public void mousePressed()
     {
-       // if((mouseX > 632 && mouseX < 730) && (mouseY > 332 && mouseY < 432))//load screen
-       
-       // start = 1;
         if((mouseX > 332 && mouseX < 475) && (mouseY > 144 && mouseY < 192))//planet 1
         {
             start = 2;
-            // sound = minim.loadFile("GUI_Select_22.wav");
-            // sound.play();
+           // sound[1].play();
            
         }else if((mouseX > 332 && mouseX < 475) && (mouseY > 206 && mouseY < 255)) //planet 2
          {
@@ -297,7 +300,8 @@ public class UI extends PApplet
       boolean locked = false;
       fill(169, 59, 171);
       textSize(30);
-      text("Radio Signal",133 ,492);
+      textAlign(CENTER);
+      text("Radio Signal",136 ,492);
       noFill();
       noStroke();
       int boxSize=130;
@@ -390,6 +394,7 @@ public class UI extends PApplet
             for(Planets pb: planets){
                 fill(58, 59, 171);
                 textSize(20);
+                textAlign(CENTER, CENTER);
                 pb.render();
                 text("ERUPTUS",400 ,164);
                 text("EARTH",400 ,228);
@@ -407,9 +412,12 @@ public class UI extends PApplet
                 text("Oxygen",100, 100);
                 text("Feul",200,100);
                 text("Water Supply", 300, 100);
+                text("Status", 400, 100);
                // cr.update();
             }
-
+            for(int t = 0; t < Textinfo.size(); t++){
+                drawInfoText();
+            }
             for(Minimap ni: lines)
             {
                 ni.render();
@@ -425,10 +433,8 @@ public class UI extends PApplet
                 
                 f.render();
             }
-
            //arcs around globe
            arglobe.render();
-           
            globe();
            bg.render();
            //bg.render(); 
@@ -600,5 +606,31 @@ public class UI extends PApplet
             noStroke();
         }
     }
+    public void loadInfoText() 
+    {
+        Table table = loadTable("coord.csv", "header");
+        for (TableRow row : table.rows()) 
+        {
+            Text infoText = new Text(row);
+            Textinfo.add(infoText);
+        }
+    }
+    public void drawInfoText()
+    {
+        for(Text infoText : Textinfo)
+        {
+            stroke(255);
+            fill(255);
+            textSize(15);
+            textAlign(LEFT);
+            text(infoText.getCurloc(), 1060, 487, 300, 200);
+            text(infoText.getDistance(), 1060, 575);
+            text(infoText.getSystem(), 1060, 611, 300, 200);
+            noFill();
+            noStroke();
+            strokeWeight(1);
+        }
+    }
+    
 }
 
