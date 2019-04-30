@@ -22,7 +22,6 @@ public class UI extends PApplet
     //AudioPlayer[] sounds = new AudioPlayer[5];
     Boxcolor[] b1 = new Boxcolor[5];
 
-    //ArrayList <Box> box = new ArrayList<Box>();
     private ArrayList<Planetdata> DataE = new ArrayList<Planetdata>();  //earth data
     private ArrayList<Planetdata> DataErup = new ArrayList<Planetdata>();  //eruptus data
     private ArrayList<Planetdata> DataKep = new ArrayList<Planetdata>();  //keplet data
@@ -101,23 +100,18 @@ public class UI extends PApplet
         // mc = new MovingCircle(this, width / 2, height / 2, 50);
         radar = new Radar(this, 0.4f, 404, 562, 75 );//UI ui, float frequency, float x, float y, float radius
         bg = new Background(100, 100 , 30,this);
-       // mini.add(new Minimap(1280, 94, 0.4f, 50, this);//(float x, float y, int size, float frequency, float radius , float r, float g, float b, PApplet ui
-        //mini.add(new Minimap(1280, 94, 0.4f, 50, 116, 0, 255, this));
-       // mini.add(new Minimap(1280, 94, 50, this));
         // elements.add(new Minimap(1280, 94, 100, 100,this));
         // elements.add(new Minimap(1280, 94, 30, 30, this));
         // elements.add(new Minimap(1280, 94, 140, 140, this));
         elements.add(new Box(1150, 4, 210, 220,this)); // mini map box
-        //elements.add(new Box(492, 139, 110, 480,this));
         elements.add(new Box(30,454,248,310,this)); //sine wave box
-        but = new Button(this, 30, 30, 100,50 );
         arglobe = new Globe(780, 350, PI + 1.2f, PI / 6, PI + 1.6f, PI / 4, PI + 0.7f, this);
 
         for(int i = 0; i < 5; i++)
         {
             Minimap ni = new Minimap(1256 ,114 , 200+(i*-35), this);
            // Planets pb = new Planets(332 ,144 +(i*62) , 144, 50, this);
-            mini.add(ni);
+            lines.add(ni);
             //planets.add(pb);
         }
         //rectangles and button rectangle inside
@@ -146,7 +140,7 @@ public class UI extends PApplet
         for(int i = 0; i < 2; i++)
         {
             int text = (int)random(50,100);
-            Circle cir = new Circle(1180, 380+(i*100), 75, 75, text, this);
+            Circle cir = new Circle(1180+(i*100), 380, 75, 75, text, this);
             circle.add(cir);
         }
 
@@ -157,7 +151,7 @@ public class UI extends PApplet
             Fan f = new Fan(350 +(i*100), 710, 100, 100, this);
             fan.add(f);
         }
-
+        //inside planet rectangles change color
         for(int i =0; i < 5; i++)
         {
             b1[i] = new Boxcolor(b1x,b1y, 115, 168, this);
@@ -188,7 +182,6 @@ public class UI extends PApplet
      
     public void mousePressed()
     {
-       // int back = start -1;
        // if((mouseX > 632 && mouseX < 730) && (mouseY > 332 && mouseY < 432))//load screen
        
        // start = 1;
@@ -248,19 +241,7 @@ public class UI extends PApplet
         ellipse(cx, cy, spiral -250 , spiral - 250);
         arc(0,0,outline,outline,0,PI);
         noFill();
-        
-        //display loading and press here
-        // if((spiral > 190 && mouseX < 200) && (spiral > 190 && spiral < 200))
-        // {
-        //     textAlign(CENTER); 
-        //     System.out.println("Loading");
-        //     spiral = 450;
-        //     fill(51, 0, 26);
-        //     noFill();
-        // } else if((spiral > 490 && mouseX < 500) && (spiral > 490 && spiral < 500)) {
-        //    // ("Press here");
-        // }
-         noStroke();
+        noStroke();
     }     
 
     public void globe(){
@@ -340,7 +321,6 @@ public class UI extends PApplet
       l += 0.3;  
       k3  += (k-k3)/500;
       }//end if stat
-      
          
     } // end if statment 
     else {
@@ -362,33 +342,16 @@ public class UI extends PApplet
         line(20,20, mouseX, mouseY);
         println(mouseX, mouseY); // find out xy co-ordinate line of infinate length from one point to x and y of my mouse
         //bg.render();
-        // if(begin == false){
-        //     //background(stary);
-        //     noStroke();
-        //     pushMatrix();
-        //     translate(width/2, height/2, -250);
-        //     pushMatrix();
-        //     rotateY(PI * frameCount / 500);
-        //     popMatrix();
-        //     loading();
-        // }
-        // else 
         if (start == 0){
             loading();
             for(int b = 0; b < button.size(); b++)
             {
                 button.get(b).render();
-                //button.mousePressed();
             }      
         }else if (start == 1){
-        //background(stary);
+
             radar.render();
             radar.update();
-            //fan.render();
-            
-            
-
-    
 
             //for the sine wave aka radio wave
             k=random(10, 15);
@@ -428,7 +391,7 @@ public class UI extends PApplet
                // cr.update();
             }
 
-            for(Minimap ni: mini)
+            for(Minimap ni: lines)
             {
                 ni.render();
             }
@@ -453,13 +416,7 @@ public class UI extends PApplet
         }else if (start == 2){ //eruptus
             background(0);
             bg.render(); 
-            but.backButton();
-            fill(0, 0, 255);
-            textSize(20);
-            textAlign(CENTER);
-            text("Back", 132, 50);
-            noFill();
-            image(s1,width - 550 ,height - 700, 450,450);
+            image(s1,width - 1250 ,height - 600, 450,350);
             for(int e = 0; e < DataErup.size(); e++)
             {
             drawErupdata();
@@ -467,8 +424,7 @@ public class UI extends PApplet
 
         }else if (start == 3){ //earth
             background(0);
-            but.backButton();
-            image(s2,width/2 ,height/2, 450,450);
+            image(s2,width - 1150 ,height - 600, 350,350);
             for(int e = 0; e < DataE.size(); e++)
             {
                 drawEarthdata();
@@ -476,8 +432,7 @@ public class UI extends PApplet
 
         }else if (start == 4){
             background(0);
-            but.backButton();
-            image(s3,width - 550 ,height - 700, 450,450);
+            image(s3,width - 1250 ,height - 600, 450,350);
             for(int e = 0; e < DataKep.size(); e++)
             {
                 drawKepdata();
@@ -485,21 +440,20 @@ public class UI extends PApplet
 
         }else if (start == 5){
             background(0);
-            but.backButton();
-            image(s4,width - 550 ,height - 700, 450,450);
+            image(s4,width - 1250 ,height - 600, 450,350);
             for(int e = 0; e < DataGli.size(); e++)
             {
                 drawGlidata();
             }
         }else if (start == 6){
             background(0);
-            but.backButton();
-            image(s5,width - 550 ,height - 700, 450,450);
+            image(s5,width - 1250 ,height - 600, 450,350);
             for(int e = 0; e < DataCri.size(); e++)
             {
                 drawCridata();
             }
         }
+        bg.render(); 
     }
     public void loadEarthdata() 
     {

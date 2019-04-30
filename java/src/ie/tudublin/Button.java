@@ -29,25 +29,22 @@ public class Button
         ui.strokeWeight(3);
         ui.noFill();
         ui.stroke(26, 206, 246);
-        
-       // ui.ellipse(x , y, width/2, height/2);
-        // ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-        // ui.text(text, x + width * 0.5f, y + height * 0.5f);
+
         ui.ellipse(x, y, width, height);//kel
         ui.noStroke();
         ui.strokeWeight(1); //cancels out the first one
     }
         
-    public void mousePressed()
-    {
-            //background(204);
-            if (ui.mousePressed == true) {
-              ui.fill(255); // White
-            } else {
-              ui.fill(0); // Black
-            }
+    // public void mousePressed()
+    // {
+    //         //background(204);
+    //         if (ui.mousePressed == true) {
+    //           ui.fill(255); // White
+    //         } else {
+    //           ui.fill(0); // Black
+    //         }
 
-    }
+    // }
     public void backButton()
     {
       ui.fill(255, 0, 255);
