@@ -94,7 +94,7 @@ public class UI extends PApplet
         button.add(new Button(this,width/2, height/2, 400, 400));
         button.add(new Button(this,width/2, height/2, 330, 330));
         // mc = new MovingCircle(this, width / 2, height / 2, 50);
-        radar = new Radar(this, 0.4f, 1200, 600, 100 );//UI ui, float frequency, float x, float y, float radius
+        radar = new Radar(this, 0.4f, 404, 562, 75 );//UI ui, float frequency, float x, float y, float radius
         bg = new Background(100, 100 , 30,this);
        // mini.add(new Minimap(1280, 94, 0.4f, 50, this);//(float x, float y, int size, float frequency, float radius , float r, float g, float b, PApplet ui
         //mini.add(new Minimap(1280, 94, 0.4f, 50, 116, 0, 255, this));
@@ -106,6 +106,7 @@ public class UI extends PApplet
         //elements.add(new Box(492, 139, 110, 480,this));
         elements.add(new Box(30,454,248,310,this)); //sine wave box
         but = new Button(this, 30, 30, 100,50 );
+        arglobe = new Globe(780, 350, PI + 1.2f, PI / 6, PI + 1.6f, PI / 4, PI + 0.7f, this);
 
         //rectangles and button rectangle inside
         for(int i = 0; i < 5; i++)
@@ -122,6 +123,22 @@ public class UI extends PApplet
             Circle cir = new Circle(100 +(i*100), 46, 75, 75, text, this);
             circle.add(cir);
         }
+
+        for(int i = 0; i < 2; i++)
+        {
+            int text = (int)random(50,100);
+            Circle cir = new Circle(1180 +(i*100), 285, 75, 75, text, this);
+            circle.add(cir);
+        }
+
+        for(int i = 0; i < 2; i++)
+        {
+            int text = (int)random(50,100);
+            Circle cir = new Circle(1180, 380+(i*100), 75, 75, text, this);
+            circle.add(cir);
+        }
+
+        //fan 
         for(int i = 0; i < 5; i++)
         {
             //int space = 10;   
@@ -135,6 +152,7 @@ public class UI extends PApplet
             // b1y += 10;
             // b1x += 10;
         }
+
         //img
         s1 = loadImage("exo.jpg");
         s2 = loadImage("dearth.jpg");
@@ -153,12 +171,7 @@ public class UI extends PApplet
         minim = new Minim(this);
         wMinim = new Minim(this);
         // sounds[1] = minim.loadFile("Glitch Sound Effects.mp3");
-        // sounds.play();
-
-
-        //globe
-        //g = new Globe(50, this);//float x, float y, float lon, float lat, float radius , PApplet ui
-        arglobe = new Globe(780, 350, PI + 1.2f, PI / 6, PI + 1.6f, PI / 4, PI + 0.7f, this);
+        // sounds.play()
     }
      
     public void mousePressed()
@@ -255,6 +268,7 @@ public class UI extends PApplet
                 point(x, y, z);
             }
         }
+        noStroke();
     }
 
 //sine wave
@@ -391,6 +405,7 @@ public class UI extends PApplet
                 text("Oxygen",100, 100);
                 text("Feul",200,100);
                 text("Water Supply", 300, 100);
+               // cr.update();
             }
 
             for(int m = 0; m < mini.size(); m++)
