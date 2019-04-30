@@ -111,10 +111,24 @@ public class UI extends PApplet
         for(int i = 0; i < 5; i++)
         {
             Minimap ni = new Minimap(1256 ,114 , 200+(i*-35), this);
-           // Planets pb = new Planets(332 ,144 +(i*62) , 144, 50, this);
             lines.add(ni);
-            //planets.add(pb);
+            
         }
+        for(int i = 0; i < 2; i++)
+        {
+            
+            Minimap ni = new Minimap(1173+(i*20) ,111+(i*80) , 20, this);
+            lines.add(ni);
+            
+        }
+        for(int i = 0; i < 2; i++)
+        {
+            
+            Minimap ni = new Minimap(1252+(i*20) ,49+(i*110) , 10, this);
+            lines.add(ni);
+            
+        }
+
         //rectangles and button rectangle inside
         for(int i = 0; i < 5; i++)
         {
@@ -262,7 +276,7 @@ public class UI extends PApplet
                 float x = radius * sin(longitude) * cos(latitude);
                 float y = radius * sin(longitude) * sin(latitude);
                 float z = radius * cos(longitude);
-                stroke(255); 
+                stroke(59, 89, 171); 
                 strokeWeight(2);
                 point(x, y, z);
             }
@@ -281,6 +295,11 @@ public class UI extends PApplet
       float ky = width/2;
       boolean overSig = false;
       boolean locked = false;
+      fill(169, 59, 171);
+      textSize(30);
+      text("Radio Signal",133 ,492);
+      noFill();
+      noStroke();
       int boxSize=130;
       for (float x=2;  x<width/5; x+=step)
       {
@@ -350,18 +369,15 @@ public class UI extends PApplet
                 button.get(b).render();
             }      
         }else if (start == 1){
-
+            
             radar.render();
-            radar.update();
 
+            radar.update();
+           
             //for the sine wave aka radio wave
             k=random(10, 15);
-            fill(169, 59, 171);
-            textSize(30);
-            text("Radio Signal",133 ,492);
             sinew();
-            noFill();
-            noStroke();
+            
 
             for (int i=0;i<2;i++)
             {
@@ -381,7 +397,8 @@ public class UI extends PApplet
                 text("GLIESE",400 ,351);
                 text("CRIM", 400 ,414);
             }
-            bg.render();
+            //bg.render();
+
             for(Circle cr: circle)
                 {
                 noFill();
@@ -411,7 +428,9 @@ public class UI extends PApplet
 
            //arcs around globe
            arglobe.render();
+           
            globe();
+           bg.render();
            //bg.render(); 
            
 
@@ -454,7 +473,7 @@ public class UI extends PApplet
                 drawCridata();
             }
         }
-        bg.render(); 
+
     }
     public void loadEarthdata() 
     {
