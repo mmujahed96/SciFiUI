@@ -9,7 +9,11 @@ Fork this repository and use it a starter project for your assignment
 # Description of the assignment
 
 # Instructions
+When the program runs a loading screen appears. The user is told to 'Press Enter' which will take them into the main part of Interface. Here there some options for user interactivity. If the user hovers over the colorful red bars inside the planet description bars then where ever they are on those bars, a dark blue colour will follow them. This only happens when the mouse is over the bars.
 
+Then to User needs to click the names of the five different planets. This will bring the user to the description of the planet. There is an image with text specifying the planet "Name", "About" and "Species". To go back to the main part the 'Back Space' is required to be pressed. The user can do the same with all the planet buttons.   
+
+The user then can hover over the sine wave labelled "Radio Wave". This will alter and increase the frequency of the wave and will also play some static noise while the user still hovers over the wave. When the user is not hovering over the sine wave the static sound effects will not play.
 # How it works
 
 # What I am most proud of in the assignment
