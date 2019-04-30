@@ -1,45 +1,60 @@
 package ie.tudublin;
 
 import processing.core.PApplet;
-import processing.core.PShape;
-//import processing.core.PVector;
 
-public class Globe
+
+public class Globe extends UIElement
 {
     
-    int size; // fields 
-    private float width;
-    private float lon;
-    private float lat;
-    private float radius;
-    //private int CENTER;
-    //private PVector globe;
-    PShape globe;
-    PApplet ui;
-    private float total;
-    //private int wd;
+    private float size1 = 450; // fields 
+    private float size2 = 400;
+    private float size3 = 425;
+    private float size4 = 475; 
+    private float ro1;
+    private float ro2;
+    private float ro3;
+    private float ro4;
+    private float ro5;
 
 
-    public Globe(int size, PApplet ui)
+    public Globe(float x, float y, float ro1, float ro2, float ro3, float ro4,float ro5, PApplet ui)
     {
-        //super(x, y, ui);
-        this.size = size;
-        //this.wd = (int) (width / 2);
-        // this.lon = lon;
-        // this.lat = lat;
-        // this.radius = radius;
-        //globe = new PVector[total+1][total+1];
-        this.ui = ui;
+        super(x, y, ui);
+        //this.size = size;
+        this.ro1 = ro1;
+        this.ro2 = ro2;
+        this.ro3 = ro3;
+        this.ro4 = ro4;
+        this.ro5 = ro5;
 
-
+    
     }
     float spin = 0;
    
     public void render()
     {
-        globe = ui.createShape(ui.SPHERE, size); 
-       // globe.setTexture(planet);
-        ui.noStroke();
-        ui.shape(globe);
+        ui.strokeWeight(10);
+        ui.stroke(175, 255, 0); 
+        ui.arc(x, y, size1,size1, ro4 , ro4 + 0.9f);
+        ui.stroke(153,0,0); 
+        ui.arc(x, y, size4, size4, ro5, ro5 + 1.5f);
+
+        ui.strokeWeight(5);
+        ui.stroke(153, 0, 0); 
+        ui.arc(x, y, size3, size3, ro1 , ro1 + 0.9f);
+        ui.stroke(0, 0, 153); 
+        ui.arc(x, y, size2, size2, ro2, ro2 + 1.5f);
+
+        
+
+        ui.strokeWeight(1);
+        ui.noFill();
+        ui.stroke(0);
+
+        ro1 = ro1 + 0.1f;
+        ro2 = ro2 + 0.1f;
+        ro3 = ro3 - 0.1f;
+        ro4 = ro4 - 0.1f;
+        ro5 = ro5 - 0.2f;
     }
 }

@@ -39,7 +39,8 @@ public class UI extends PApplet
     float radius = 0;
     //Minimap mini;
     AudioPlayer sound, wSound;
-    Globe g;
+    Globe arglobe;
+
     
 
 
@@ -157,6 +158,7 @@ public class UI extends PApplet
 
         //globe
         //g = new Globe(50, this);//float x, float y, float lon, float lat, float radius , PApplet ui
+        arglobe = new Globe(780, 350, PI + 1.2f, PI / 6, PI + 1.6f, PI / 4, PI + 0.7f, this);
     }
      
     public void mousePressed()
@@ -236,8 +238,8 @@ public class UI extends PApplet
     public void globe(){
         fill(255);
         lights();
-        translate(width/2, height/2);
-        float radius = 250;
+        translate(767, 365);
+        float radius = 150;
         int t =100;
         for(int i =0; i < t; i++)
         {
@@ -249,7 +251,7 @@ public class UI extends PApplet
                 float y = radius * sin(longitude) * sin(latitude);
                 float z = radius * cos(longitude);
                 stroke(255); 
-                strokeWeight(4);
+                strokeWeight(2);
                 point(x, y, z);
             }
         }
@@ -407,7 +409,9 @@ public class UI extends PApplet
                 f.render();
             }
             bg.render();    
-           // g.render();
+
+           //arcs around globe
+           arglobe.render();
            globe();
             
 
