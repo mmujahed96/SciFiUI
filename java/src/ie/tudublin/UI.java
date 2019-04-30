@@ -103,7 +103,7 @@ public class UI extends PApplet
         bg = new Background(100, 100 , 30,this);
        // mini.add(new Minimap(1280, 94, 0.4f, 50, this);//(float x, float y, int size, float frequency, float radius , float r, float g, float b, PApplet ui
         //mini.add(new Minimap(1280, 94, 0.4f, 50, 116, 0, 255, this));
-        mini.add(new Minimap(1280, 94, 50, this));
+       // mini.add(new Minimap(1280, 94, 50, this));
         // elements.add(new Minimap(1280, 94, 100, 100,this));
         // elements.add(new Minimap(1280, 94, 30, 30, this));
         // elements.add(new Minimap(1280, 94, 140, 140, this));
@@ -115,7 +115,7 @@ public class UI extends PApplet
 
         for(int i = 0; i < 5; i++)
         {
-            Minimap ni = new Minimap(1280 ,44 , 450+(i*-10), this);
+            Minimap ni = new Minimap(1256 ,114 , 200+(i*-35), this);
            // Planets pb = new Planets(332 ,144 +(i*62) , 144, 50, this);
             mini.add(ni);
             //planets.add(pb);
@@ -428,10 +428,9 @@ public class UI extends PApplet
                // cr.update();
             }
 
-            for(int m = 0; m < mini.size(); m++)
+            for(Minimap ni: mini)
             {
-                mini.get(m).render();
-                //mini.get(m).move();
+                ni.render();
             }
             //boxes
             for(int x = 0; x < elements.size(); x++)
