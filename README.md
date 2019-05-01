@@ -16,6 +16,18 @@ Once the User is done with that. They can click the names of the five different 
 
 The user can then hover over the Sine Wave labelled "Radio Wave". This will alter and increase the frequency of the wave and will also play some static noise while the user still hovers over the wave. When the user is not hovering over the Sine Wave the static sound effects will not play.
 # How it works
+UI Class
+- The UI class is where everything is rendered and called. This is where I implemented code for the Globe, the Sine Wave and the loading screen. Here, the Array lists and their declarations are stored with other methods like mousePressed and keyPressed. To make the 3D globe translate(x,y,z) was also used. 
+
+UIElement Class
+- The UIElement class is the super class where all the other classes need to inherit from.
+
+Circle Class
+- This was used to draw the circle at the top and the right side of the screen. They are circles with rotating arcs which have random percentages inside it. The pushMatrix(), popMatrix(), translate(), rotate() were used.  
+
+
+
+
 
 # What I am most proud of in the assignment
 
