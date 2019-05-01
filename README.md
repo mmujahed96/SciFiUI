@@ -7,6 +7,7 @@ Student Number: C17427304
 Fork this repository and use it a starter project for your assignment
 
 # Description of the assignment
+I created a Sci-Fi User Interface which is based on the idea of Humans living in space for about a hundred years who have no Planet(Earth) to go back to. For generations they have living on a space ship. They are searching for an Earthlike planet in another galaxy and start a new life there. The UI enables the user to know some information about the planets and the species that run the planet.
 
 # Instructions
 When the program runs a loading screen appears. The user is told to 'Press Enter' which will take them into the main part of Interface. Here there some options for user interactivity. If the user hovers over the colorful red bars inside the planet description bars then where ever they are on those bars, a dark blue colour will follow them. This only happens when the mouse is over the bars.
