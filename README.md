@@ -10,11 +10,11 @@ Fork this repository and use it a starter project for your assignment
 I created a Sci-Fi User Interface which is based on the idea of Humans living in space for about a hundred years who have no Planet(Earth) to go back to. For generations they have living on a space ship. They are searching for an Earthlike planet in another galaxy and start a new life there. The UI enables the user to know some information about the planets and the species that run the planet.
 
 # Instructions
-When the program runs a loading screen appears. The user is told to 'Press Enter' which will take them into the main part of Interface. Here there some options for user interactivity. If the user hovers over the colorful red bars inside the planet description bars then where ever they are on those bars, a dark blue colour will follow them. This only happens when the mouse is over the bars.
+When the program runs a loading screen with bright circles appears. The User will then need to press 'Enter' which will take them into the main part of Interface. Here there some options for User interaction. If the User hovers over the colorful red bars beside the planet description button then where ever the positions of mouseX and mouseY are the colour will change from red to a dark blue. This only occurs if mouseX and mouseY are on the bars.
 
-Then to User needs to click the names of the five different planets. This will bring the user to the description of the planet. There is an image with text specifying the planet "Name", "About" and "Species". To go back to the main part the 'Back Space' is required to be pressed. The user can do the same with all the planet buttons.   
+Once the User is done with that. They can click the names of the five different planets. This will bring the user to the description of the planet. There is an image with text specifying the planet "Name", "About" and "Species". To go back to the main part the 'Back Space' is required to be pressed. The user can do the same with all the planet buttons.   
 
-The user then can hover over the sine wave labelled "Radio Wave". This will alter and increase the frequency of the wave and will also play some static noise while the user still hovers over the wave. When the user is not hovering over the sine wave the static sound effects will not play.
+The user can then hover over the Sine Wave labelled "Radio Wave". This will alter and increase the frequency of the wave and will also play some static noise while the user still hovers over the wave. When the user is not hovering over the Sine Wave the static sound effects will not play.
 # How it works
 
 # What I am most proud of in the assignment
