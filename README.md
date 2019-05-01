@@ -18,47 +18,45 @@ The user can then hover over the Sine Wave labelled "Radio Wave". This will alte
 # How it works
 
 ## UI Class
-- The UI class is where everything is rendered and called. This is where I implemented code for the Globe, the Sine Wave and the loading screen. Here, the Array lists and their declarations are stored with other methods like mousePressed and keyPressed. To make the 3D globe translate(x,y,z) was also used. I used a lot of If/Else statments, especially to make sure I was going to different planets if I clicked between certain x,y values.
+The UI class is where everything is rendered and called. This is where I implemented code for the Globe, the Sine Wave and the loading screen. Here, the Array lists and their declarations are stored with other methods like mousePressed and keyPressed. To make the 3D globe translate(x,y,z) was also used. I used a lot of If/Else statments, especially to make sure I was going to different planets if I clicked between certain x,y values. I also used polymorphism in this class.
 
 ## UIElement Class
-- The UIElement class is the super class where all the other classes need to inherit from.
+The UIElement class is the super class where all the other classes need to inherit from.
 
 ## Circle Class
-- This was used to draw the circle at the top and the right side of the screen. They are circles with rotating arcs which have random percentages inside it. The pushMatrix(), popMatrix(), translate(), rotate() were used. I used sin,cos, 
+This was used to draw the circle at the top and the right side of the screen. They are circles with rotating arcs which have random percentages inside it. The pushMatrix(), popMatrix(), translate(), rotate() were used. I used sin,cos, 
 tan here aswell.
 
 ## Boxcolor Class
-- This class was used to make the red bars which change color where the mouse is just ahead of them. mouseX and mouseY is the position where the color blue where the surrounding will remain red.
+This class was used to make the red bars which change color where the mouse is just ahead of them. mouseX and mouseY is the position where the color blue where the surrounding will remain red.
 
 ## Fan Class
-- This class uses multiple ellipse() within a for loop. Which makes a perpeler like shape. The circles with in the outline rotate using pushMatrix(), popMatrix(), translate and rotation.
+This class uses multiple ellipse() within a for loop. Which makes a perpeler like shape. The circles with in the outline rotate using pushMatrix(), popMatrix(), translate and rotation.
 
 ## Minimap Class
-- Used to draw the mini map of the galaxy in the top right corner.
+Used to draw the mini map of the galaxy in the top right corner.
 
 ## Planets Class
-- This class was used to make the rectangle shapes where the planet button is stored. The shape of the button was also make using this class.
+This class was used to make the rectangle shapes where the planet button is stored. The shape of the button was also make using this class.
 
 ## Box Class
-- Used to give structure to the main part. The Minimap is drawn within this and
+Used to give structure to the main part. The Minimap is drawn within this and
 so is the sign wave and the informaition text in the right bottom corner.
 
 ## Globle Class
-- The class is used to make the rotating arcs around the globle in the main page. With arc() being used mutiple times and with different float values. Each arc has a different color.  
+The class is used to make the rotating arcs around the globle in the main page. With arc() being used mutiple times and with different float values. Each arc has a different color.  
 
 ## Background Class
--This class was made for the purpose of having a grid pattern background to the assignment. However, with the success of the 3D features the background twisted with the center of the shpere being x and y.
+This class was made for the purpose of having a grid pattern background to the assignment. However, with the success of the 3D features the background twisted with the center of the shpere being x and y.
 
 ## Button Class
-- This create the skeleton of the loading page. It is used to draw the circles. 
+This create the skeleton of the loading page. It is used to draw the circles. 
 
 ## Radar Class
-- This class uses PVector. It is for the radar. 
+This class uses PVector. It is for the radar. 
 
 ## Planetdata Class and Text Class
-- Thses classes are used to store the data that I wanted displayed. 
-
-
+Thses classes are used to store the data that I wanted displayed. Using a constructor the data in the csv files will display on the main page and on the pages for each planet.
 
 
 # What I am most proud of in the assignment
@@ -71,71 +69,11 @@ I am also very proud with my Sine Wave. Quiet a lot of thinking went into figuri
 
 Everyday after spending continuous hours on trying to figure out how to make each of my desired shapes I would create a new plan for the next day, this meant I numbered the different parts of the assignment I needed to finish the following day. If I thought of another way to make a certain shape it was included in my plan. This allowed me to keep track of what I needed to do.
 
-# Markdown Tutorial
 
-This is *emphasis*
 
-This is a bulleted list
-
-- Item
-- Item
-
-This is a numbered list
-
-1. Item
-1. Item
-
-This is a [hyperlink](http://bryanduggan.org)
-
-# Headings
-## Headings
-#### Headings
-##### Headings
-
-This is code:
-
-```Java
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-So is this without specifying the language:
-
-```
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-This is an image using a relative URL:
-
-![An image](images/p8.png)
-
-This is an image using an absolute URL:
-
-![A different image](https://bryanduggandotorg.files.wordpress.com/2019/02/infinite-forms-00045.png?w=595&h=&zoom=2)
-
+# YouTube
 This is a youtube video:
 
-[![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
+[![YouTube](http://img.youtube.com/watch?v=POyih3poA_k.jpg)](https://www.youtube.com/watch?v=POyih3poA_k)
 
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
 
