@@ -17,45 +17,45 @@ Once the User is done with that. They can click the names of the five different 
 The user can then hover over the Sine Wave labelled "Radio Wave". This will alter and increase the frequency of the wave and will also play some static noise while the user still hovers over the wave. When the user is not hovering over the Sine Wave the static sound effects will not play.
 # How it works
 
-UI Class
+## UI Class
 - The UI class is where everything is rendered and called. This is where I implemented code for the Globe, the Sine Wave and the loading screen. Here, the Array lists and their declarations are stored with other methods like mousePressed and keyPressed. To make the 3D globe translate(x,y,z) was also used. I used a lot of If/Else statments, especially to make sure I was going to different planets if I clicked between certain x,y values.
 
-UIElement Class
+## UIElement Class
 - The UIElement class is the super class where all the other classes need to inherit from.
 
-# Circle Class
+## Circle Class
 - This was used to draw the circle at the top and the right side of the screen. They are circles with rotating arcs which have random percentages inside it. The pushMatrix(), popMatrix(), translate(), rotate() were used. I used sin,cos, 
 tan here aswell.
 
-# Boxcolor Class
+## Boxcolor Class
 - This class was used to make the red bars which change color where the mouse is just ahead of them. mouseX and mouseY is the position where the color blue where the surrounding will remain red.
 
-# Fan Class
+## Fan Class
 - This class uses multiple ellipse() within a for loop. Which makes a perpeler like shape. The circles with in the outline rotate using pushMatrix(), popMatrix(), translate and rotation.
 
-# Minimap Class
+## Minimap Class
 - Used to draw the mini map of the galaxy in the top right corner.
 
-# Planets Class
+## Planets Class
 - This class was used to make the rectangle shapes where the planet button is stored. The shape of the button was also make using this class.
 
-# Box Class
+## Box Class
 - Used to give structure to the main part. The Minimap is drawn within this and
 so is the sign wave and the informaition text in the right bottom corner.
 
-# Globle Class
+## Globle Class
 - The class is used to make the rotating arcs around the globle in the main page. With arc() being used mutiple times and with different float values. Each arc has a different color.  
 
-# Background Class
+## Background Class
 -This class was made for the purpose of having a grid pattern background to the assignment. However, with the success of the 3D features the background twisted with the center of the shpere being x and y.
 
-# Button Class
+## Button Class
 - This create the skeleton of the loading page. It is used to draw the circles. 
 
-# Radar Class
+## Radar Class
 - This class uses PVector. It is for the radar. 
 
-# Planetdata Class and Text Class
+## Planetdata Class and Text Class
 - Thses classes are used to store the data that I wanted displayed. 
 
 
