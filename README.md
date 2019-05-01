@@ -74,6 +74,6 @@ Everyday after spending continuous hours on trying to figure out how to make eac
 # YouTube
 This is a youtube video:
 
-[![YouTube](http://img.https://youtu.be/POyih3poA_k.jpg)](https://www.youtube.com/watch?v=POyih3poA_k)
+[![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg](https://youtu.be/POyih3poA_k)
 
 
