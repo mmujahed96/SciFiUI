@@ -19,6 +19,14 @@ The user can then hover over the Sine Wave labelled "Radio Wave". This will alte
 
 # What I am most proud of in the assignment
 
+What I am most proud of is that I implemented most ideas thats I planned for this assignment. Getting started was the difficult part for me but with some research and coming up with different ideas, I finally decided on what I wanted to make.
+
+I am really proud that I actually got the 3D shere to rotate even though I considered it a huge challenge for this assignment. I am proud that even when this assignment seemed difficult I kept going and in most cases reached the results I aimed hard for.
+
+I am also very proud with my Sine Wave. Quiet a lot of thinking went into figuring out how to implement the if/else statment within the code for the actual Sine Wave, but I figured it out. Having the static sound there too also makes me proud.
+
+Everyday after spending continuous hours on trying to figure out how to make each of my desired shapes I would create a new plan for the next day, this meant I numbered the different parts of the assignment I needed to finish the following day. If I thought of another way to make a certain shape it was included in my plan. This allowed me to keep track of what I needed to do.
+
 # Markdown Tutorial
 
 This is *emphasis*
